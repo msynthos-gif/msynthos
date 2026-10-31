@@ -1,0 +1,1153 @@
+/* styles.module.css - High-Contrast Vibrant Modern Fintech UI Palette */
+
+.container {
+  min-height: 100vh;
+  background-color: #f1f5f9; /* Warm soft slate outer background */
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.container *,
+.container *::before,
+.container *::after {
+  box-sizing: border-box;
+}
+
+/* =====================================================================
+   1. BRAND HEADER (Deep Slate-900 Solid + Amber/Gold Institutional Badge)
+   ===================================================================== */
+
+.header {
+  background-color: #0f172a; /* Deep Slate-900 */
+  border-bottom: 2px solid #1e293b;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  padding: 1.125rem 1.5rem;
+}
+
+.headerContent {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+/* Amber/Gold Institutional Badge */
+.brandEmblem {
+  width: 2.375rem;
+  height: 2.375rem;
+  background-color: #f59e0b; /* Amber-500 */
+  border: 1px solid #d97706; /* Amber-600 */
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #78350f; /* Amber-900 icon */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.brandTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff; /* Crisp white */
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.brandSubtitle {
+  font-size: 0.8125rem;
+  color: #94a3b8; /* Slate-400 */
+  margin: 0.15rem 0 0 0;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  color: #cbd5e1; /* Slate-300 */
+  font-weight: 500;
+}
+
+.jurisdictionTag {
+  background-color: #1e293b; /* Slate-800 */
+  border: 1px solid #334155; /* Slate-700 */
+  color: #f8fafc;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* =====================================================================
+   2. MAIN LAYOUT
+   ===================================================================== */
+
+.main {
+  flex: 1;
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .layoutGrid {
+    grid-template-columns: 1fr 1.15fr;
+  }
+}
+
+/* Left Column */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Statutory 2026 Badge (Warm Amber) */
+.badge2026 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: #fef3c7; /* bg-amber-100 */
+  border: 1px solid #fcd34d; /* border-amber-300 */
+  color: #78350f; /* text-amber-900 */
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  width: fit-content;
+  letter-spacing: -0.005em;
+}
+
+.badge2026 svg {
+  color: #b45309; /* Amber-700 */
+  flex-shrink: 0;
+}
+
+.h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a; /* Deep Charcoal Slate */
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.0625rem;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.subtitle strong {
+  color: #0f172a;
+}
+
+/* Left Info Section (Soft Indigo bg, Solid 4px Royal Blue Left Border) */
+.infoSection {
+  background-color: rgba(238, 242, 255, 0.75); /* bg-indigo-50/70 */
+  border: 1px solid #c7d2fe; /* border-indigo-200 */
+  border-left: 4px solid #4f46e5; /* border-l-4 border-indigo-600 */
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.infoSectionTitle {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: #312e81; /* Deep Indigo-900 heading */
+  margin: 0 0 1.125rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid #e0e7ff;
+  padding-bottom: 0.625rem;
+}
+
+.infoSectionTitle svg {
+  color: #4f46e5;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  line-height: 1.55;
+}
+
+.infoItem strong {
+  color: #1e1b4b; /* Solid Deep Indigo */
+}
+
+/* Crisp Royal Blue Checkmarks */
+.checkIcon {
+  color: #2563eb; /* Royal Blue (blue-600) */
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.legalReferenceBox {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 0 6px 6px 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  color: #475569;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.legalReferenceBox strong {
+  color: #0f172a;
+}
+
+/* =====================================================================
+   3. RIGHT COLUMN: FORM CARD & CONTROLS
+   ===================================================================== */
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Pure White Card with Crisp Slate Borders and Soft Shadow */
+.formCard {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1; /* border-slate-300 */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  padding: 1.75rem;
+}
+
+.cardHeader {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cardTitle {
+  font-size: 1.1875rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.cardSubtitle {
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+/* Select Input with Solid Blue Focus Ring */
+.selectInput {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #0f172a;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selectInput:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currencyPrefix {
+  position: absolute;
+  left: 0.875rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* Gross Input: Large, Crisp Text with Solid Blue Focus Ring */
+.numberInput {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.75rem 3.5rem 0.75rem 2.25rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.numberInput:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.currencySuffix {
+  position: absolute;
+  right: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #64748b;
+  pointer-events: none;
+}
+
+/* Range Slider Control */
+.sliderContainer {
+  margin-top: 1rem;
+}
+
+.rangeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2563eb; /* Vibrant Royal Blue */
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.rangeSlider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.sliderMarks {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.markBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.markBtn:hover {
+  color: #2563eb;
+}
+
+/* Controls & Preset Buttons */
+.presetsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+/* Inactive Preset: Clean White Background, Slate-700 text, 1px solid Slate-300 Border */
+.presetBtn {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.presetBtn:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* Active Preset: Solid Vibrant Royal Blue */
+.presetBtnActive {
+  background-color: #2563eb !important; /* bg-blue-600 */
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.35);
+}
+
+/* Checkbox Card */
+.checkboxCard {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 1.125rem;
+  margin-top: 1.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.checkboxLabelRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.standardCheckbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.checkboxTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.checkboxHelp {
+  font-size: 0.8125rem;
+  color: #475569;
+  margin-top: 0.375rem;
+  line-height: 1.45;
+}
+
+.statusNotice {
+  margin-top: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.noticeIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.noticeWarning {
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  color: #92400e;
+}
+
+.noticeSuccess {
+  background-color: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+}
+
+/* =====================================================================
+   4. RESULTS DISPLAY BOX (Distinct Solid Deep Dark Slate Container)
+   ===================================================================== */
+
+.resultsBox {
+  background-color: #0f172a; /* Solid Deep Dark Slate (bg-slate-900) */
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.resultsHeader {
+  background-color: #020617; /* Solid Dark Slate-950 top banner */
+  color: #ffffff;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.resultsHeaderTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8; /* Slate-400 */
+  margin: 0 0 0.35rem 0;
+}
+
+/* Netto Auszahlungsbetrag: Bold, Solid Emerald Green */
+.resultsNetAmount {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #34d399; /* text-emerald-400 */
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.statusIndicator {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: right;
+  max-width: 220px;
+  line-height: 1.35;
+}
+
+/* Breakdown Table inside Dark Container */
+.tableContainer {
+  padding: 1.25rem 1.75rem;
+  background-color: #0f172a; /* Slate-900 */
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.dataTable tr {
+  border-bottom: 1px solid #1e293b;
+}
+
+.dataTable td {
+  padding: 0.75rem 0;
+}
+
+.dataLabel {
+  font-weight: 500;
+  color: #94a3b8; /* Slate-400 */
+}
+
+.dataValue {
+  text-align: right;
+  font-weight: 700;
+  color: #f8fafc; /* Crisp white-slate */
+}
+
+/* Deductions (RV / Abzüge): Highlighted in Soft Rose/Crimson */
+.deductionText {
+  color: #fb7185 !important; /* text-rose-400 */
+  font-weight: 700;
+}
+
+/* Total Net Row */
+.totalRow td {
+  border-top: 2px solid #34d399; /* Emerald Green divider */
+  border-bottom: none;
+  padding-top: 0.875rem;
+  font-weight: 800;
+  font-size: 1.0625rem;
+  color: #ffffff;
+}
+
+.totalNetValue {
+  color: #34d399 !important; /* text-emerald-400 */
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+/* Employer Note in Dark Container */
+.employerNote {
+  background-color: #020617; /* Dark Slate-950 */
+  border-top: 1px solid #1e293b;
+  padding: 1.125rem 1.75rem;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  line-height: 1.55;
+}
+
+.employerNote strong {
+  color: #f8fafc;
+}
+
+.employerBreakdownList {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+}
+
+.employerBreakdownList li {
+  margin-bottom: 0.25rem;
+}
+
+/* =====================================================================
+   5. SEO RATGEBER & EDITORIAL CONTENT (Clean White Cards & Navy Headings)
+   ===================================================================== */
+
+.seoContainer {
+  margin-top: 3.5rem;
+  background-color: #ffffff; /* Clean white card */
+  border: 1px solid #e2e8f0; /* Crisp slate-200 border */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  padding: 2.5rem 2rem;
+}
+
+@media (max-width: 640px) {
+  .seoContainer {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.seoHeader {
+  border-bottom: 2px solid #2563eb; /* Vibrant Royal Blue Accent */
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.seoTitle {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: #0f172a; /* Deep Slate */
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.seoSubtitle {
+  font-size: 0.9375rem;
+  color: #475569; /* Crisp Slate-600 */
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* KPI Dashboard Grid */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.125rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .kpiGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.kpiCard {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.kpiCard:hover {
+  border-color: #cbd5e1;
+}
+
+.kpiValue {
+  font-size: 1.875rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.015em;
+}
+
+/* Distinct High-Contrast Fintech Accents for KPI cards */
+.kpiBlue {
+  color: #2563eb; /* Royal Blue */
+}
+
+.kpiEmerald {
+  color: #059669; /* Emerald-600 */
+}
+
+.kpiIndigo {
+  color: #4f46e5; /* Indigo-600 */
+}
+
+.kpiAmber {
+  color: #d97706; /* Amber-600 */
+}
+
+.kpiLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+}
+
+.kpiDesc {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Guide Sections */
+.guideSection {
+  margin-bottom: 2.75rem;
+}
+
+.guideSection:last-child {
+  margin-bottom: 0;
+}
+
+.guideSectionTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  letter-spacing: -0.01em;
+}
+
+.sectionIcon {
+  color: #2563eb; /* Royal Blue */
+  flex-shrink: 0;
+}
+
+.guideParagraph {
+  font-size: 0.9375rem;
+  color: #475569; /* Crisp Slate-600 */
+  line-height: 1.65;
+  margin: 0 0 1rem 0;
+}
+
+.guideParagraph strong {
+  color: #0f172a;
+}
+
+.guideParagraph code {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+
+/* Comparison Table */
+.tableResponsive {
+  overflow-x: auto;
+  margin: 1.25rem 0 1.5rem 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.guideTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+  background-color: #ffffff;
+}
+
+.guideTable th {
+  background-color: #0f172a; /* Dark Slate Header */
+  color: #ffffff;
+  padding: 0.875rem 1rem;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.guideTable td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.guideTable tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.guideTable tr:hover td {
+  background-color: #f1f5f9;
+}
+
+.guideTable .highlightTh {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.guideTable .highlightTd {
+  background-color: #eff6ff !important;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+/* Side-by-Side Comparison Cards */
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .comparisonGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.comparisonCard {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.comparisonHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.comparisonTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.comparisonBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.badgeGewerbe {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.badgeHaushalt {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.comparisonList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #334155;
+}
+
+.comparisonList li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed #f1f5f9;
+}
+
+.comparisonTotal {
+  margin-top: 0.875rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid #0f172a;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+
+/* Callout Box */
+.guideCallout {
+  background-color: #f8fafc;
+  border-left: 4px solid #2563eb;
+  border-top: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.guideCallout strong {
+  color: #0f172a;
+}
+
+/* =====================================================================
+   6. FAQ ACCORDION COMPONENT (Clean White Cards & Sharp Contrast)
+   ===================================================================== */
+
+.faqSection {
+  margin-top: 3.5rem;
+  border-top: 2px solid #e2e8f0;
+  padding-top: 2.5rem;
+}
+
+.faqSectionTitle {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.faqSectionSubtitle {
+  font-size: 0.9375rem;
+  color: #64748b;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.faqItem {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.faqItem:hover {
+  border-color: #cbd5e1;
+}
+
+.faqItemOpen {
+  border-color: #2563eb;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.08);
+}
+
+.faqButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0f172a;
+  transition: background-color 0.15s ease;
+}
+
+.faqButton:hover {
+  background-color: #f8fafc;
+}
+
+.faqButtonActive {
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2563eb;
+}
+
+.faqChevron {
+  color: #2563eb;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faqChevronOpen {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+  background-color: #ffffff;
+  font-size: 0.9375rem;
+  color: #475569; /* Crisp Slate-600 */
+  line-height: 1.65;
+}
+
+.faqAnswer p {
+  margin: 0 0 0.75rem 0;
+}
+
+.faqAnswer p:last-child {
+  margin-bottom: 0;
+}
+
+.faqAnswer strong {
+  color: #0f172a;
+}
+
+.faqAnswer code {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.faqAnswer ul {
+  margin: 0.5rem 0 0.75rem 0;
+  padding-left: 1.25rem;
+}
+
+.faqAnswer li {
+  margin-bottom: 0.35rem;
+}
+
+/* =====================================================================
+   7. FOOTER
+   ===================================================================== */
+
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 2.25rem 1.5rem;
+  margin-top: auto;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.footerContent {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footerContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.footerDisclaimer {
+  max-width: 650px;
+  line-height: 1.5;
+}
+
+.footerDisclaimer strong {
+  color: #0f172a;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.footerLink {
+  color: #475569;
+  transition: color 0.15s ease;
+}
+
+.footerLink:hover {
+  color: #2563eb;
+}

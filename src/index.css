@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-light: #F7F8FA;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #EEF0F3;
+  --color-text-primary: #0E1A2E;
+  --color-text-body: #1F2D44;
+  --color-text-muted: #5C6B85;
+  --color-accent-navy: #2D4A7A;
+  --color-accent-bright: #1A3A6B;
+  --color-border-light: #D9DDE3;
+  --color-border-hover: #B8C0CC;
+  
+  /* Fallbacks to prevent component breaking */
+  --color-bg-dark: #F7F8FA;
+  --color-accent: #2D4A7A;
+  --color-accent-dim: rgba(45, 74, 122, 0.05);
+  --color-accent-border: #D9DDE3;
+
+  /* Navy Theme Additions */
+  --color-navy-dark: #0A192F;
+  --color-navy-card: #112240;
+  --color-navy-border: rgba(255, 255, 255, 0.1);
+  --color-navy-border-hover: rgba(255, 255, 255, 0.25);
+  --color-silver-light: #F8F9FA;
+  --color-silver-muted: #A8B2D1;
+  --color-silver-dark: #8892B0;
+}
+
+/* Base resets & scroll behavior */
+html {
+  scroll-behavior: smooth;
+  background-color: #F7F8FA;
+  color: #1F2D44;
+  font-family: "Inter", sans-serif;
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom premium light scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7F8FA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9DDE3;
+  border-radius: 5px;
+  border: 2px solid #F7F8FA;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D4A7A;
+}
+
+/* Custom navy scrollbar for dropdowns */
+.scrollbar-navy::-webkit-scrollbar {
+  width: 5px;
+}
+.scrollbar-navy::-webkit-scrollbar-track {
+  background: rgba(14, 26, 46, 0.05);
+  border-radius: 4px;
+}
+.scrollbar-navy::-webkit-scrollbar-thumb {
+  background: #0E1A2E;
+  border-radius: 4px;
+}
+.scrollbar-navy::-webkit-scrollbar-thumb:hover {
+  background: #1A3A6B;
+}
+
+/* Glassmorphism helpers for Light Theme */
+.glass-nav {
+  background: rgba(14, 26, 46, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(45, 74, 122, 0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #D9DDE3;
+  box-shadow: 0 8px 32px 0 rgba(14, 26, 46, 0.05);
+}
+
+.glass-card:hover {
+  border-color: #B8C0CC;
+  box-shadow: 0 8px 32px 0 rgba(45, 74, 122, 0.08);
+}
+
+.glass-card-navy {
+  background: rgba(17, 34, 64, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.3);
+}
+
+.glass-card-navy:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(10, 25, 47, 0.4);
+}
+
+/* Interactive elements text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #0E1A2E 0%, #1F2D44 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #0E1A2E 30%, #1A3A6B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Perspective styling for 3D Tilt Card */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Background animated grid */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(14, 26, 46, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 26, 46, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+.grid-bg-navy {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+/* Circular text slow spin animation */
+@keyframes spin-linear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-linear 25s linear infinite !important;
+}
+
+/* Hero ambient glow orb drift animations */
+@keyframes hero-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(40px, -30px); }
+  50% { transform: translate(-20px, 50px); }
+  75% { transform: translate(30px, 20px); }
+}
+
+@keyframes hero-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-35px, 25px); }
+  50% { transform: translate(45px, -15px); }
+  75% { transform: translate(-25px, -40px); }
+}
+
+@keyframes hero-drift-3 {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(calc(-50% + 30px), calc(-50% - 45px)); }
+  50% { transform: translate(calc(-50% - 40px), calc(-50% + 25px)); }
+  75% { transform: translate(calc(-50% + 20px), calc(-50% + 35px)); }
+}
+
+.hero-orb-1 {
+  animation: hero-drift-1 20s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+  animation: hero-drift-2 18s ease-in-out infinite;
+}
+
+.hero-orb-3 {
+  animation: hero-drift-3 25s ease-in-out infinite;
+}
+
+/* Contact Process Marquee continuous infinite scroll */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
