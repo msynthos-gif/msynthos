@@ -673,7 +673,7 @@ export default function MinijobRechner() {
   };
 
   return (
-    <div className={`${styles.container} w-full max-w-full overflow-x-hidden px-4 sm:px-6`}>
+    <div className={styles.container}>
       {/* Route-Specific Isolated Favicon & Touch Icon for Minijob Tool */}
       <link rel="icon" type="image/png" href="/minijob-favicon.png" />
       <link rel="apple-touch-icon" href="/minijob-favicon.png" />
@@ -699,102 +699,79 @@ export default function MinijobRechner() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       {/* 1. Institutioneller Portal-Header */}
-      <header className={`${styles.header} w-full max-w-full`}>
-        <div className={`${styles.headerContent} w-full max-w-6xl mx-auto`}>
-          <div className={styles.brandGroup}>
-            <div className={styles.brandEmblem}>
-              <img 
-                src="/minijob-favicon.png" 
-                alt="Minijob-Rechner Logo" 
-                className={styles.brandLogoImg} 
-                width="40" 
-                height="40" 
-              />
+      <header className={`${styles.header} w-full`}>
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={styles.headerContent}>
+            <div className={styles.brandGroup}>
+              <div className={styles.brandEmblem}>
+                <img 
+                  src="/minijob-favicon.png" 
+                  alt="Minijob-Rechner Logo" 
+                  className={styles.brandLogoImg} 
+                  width="40" 
+                  height="40" 
+                />
+              </div>
+              <div>
+                <h2 className={`${styles.brandTitle} break-words hyphens-auto`}>Minijob-Rechner</h2>
+                <p className={`${styles.brandSubtitle} break-words`}>Berechnungsportal für geringfügige Beschäftigung & Übergangsbereich</p>
+              </div>
             </div>
-            <div>
-              <h2 className={`${styles.brandTitle} break-words hyphens-auto`}>Minijob-Rechner</h2>
-              <p className={`${styles.brandSubtitle} break-words`}>Berechnungsportal für geringfügige Beschäftigung & Übergangsbereich</p>
+            <div className={styles.headerMeta}>
+              <span className={styles.jurisdictionTag}>Deutschland</span>
+              <span>Stand: 2026 / 2025 / 2024</span>
             </div>
-          </div>
-          <div className={styles.headerMeta}>
-            <span className={styles.jurisdictionTag}>Deutschland</span>
-            <span>Stand: 2026 / 2025 / 2024</span>
           </div>
         </div>
       </header>
 
-      {/* 2. Hauptbereich: Zwei-Spalten-Layout */}
-      <main className={`${styles.main} w-full max-w-6xl mx-auto`}>
-        <div className={`${styles.layoutGrid} flex flex-col lg:flex-row gap-6 w-full`} id="rechner-top">
-          {/* Linke Spalte: Behördliche Informationshierarchie & Vertrauensbasis */}
-          <section className={`${styles.leftColumn} w-full lg:flex-1 min-w-0`} aria-labelledby="heading-overview">
-            <div className={`${styles.badge2026} break-words hyphens-auto`}>
-              <Scale size={14} />
-              <span>Geringfügigkeitsgrenze 2026: 603 €</span>
-            </div>
+      {/* 2. Hauptbereich: Standard Centered Container */}
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 py-8">
+        {/* Intro Header */}
+        <section className="w-full mb-6" aria-labelledby="heading-overview">
+          <div className={`${styles.badge2026} break-words hyphens-auto mb-3`}>
+            <Scale size={14} />
+            <span>Geringfügigkeitsgrenze 2026: 603 €</span>
+          </div>
 
-            <h1 id="heading-overview" className={`${styles.h1} break-words hyphens-auto`}>
-              Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben
-            </h1>
-            <p className={`${styles.subtitle} break-words`}>
-              Ermitteln Sie die exakte Netto-Auszahlung, den 3,6 % Rentenversicherungs-Eigenanteil 
-              nach der neuen <strong>603-Euro-Grenze</strong> (Mindestlohn 13,90 €) sowie die pauschalen 
-              Arbeitgeberabgaben (~31,2 %) und den Übergangsbereich nach § 20 SGB IV.
-            </p>
+          <h1 id="heading-overview" className={`${styles.h1} break-words hyphens-auto mb-3`}>
+            Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben
+          </h1>
+          <p className={`${styles.subtitle} break-words`}>
+            Ermitteln Sie die exakte Netto-Auszahlung, den 3,6 % Rentenversicherungs-Eigenanteil 
+            nach der neuen <strong>603-Euro-Grenze</strong> (Mindestlohn 13,90 €) sowie die pauschalen 
+            Arbeitgeberabgaben (~31,2 %) und den Übergangsbereich nach § 20 SGB IV.
+          </p>
+        </section>
 
-            <div className={`${styles.infoSection} w-full max-w-full`}>
-              <h2 className={`${styles.infoSectionTitle} break-words hyphens-auto`}>
-                <Info size={18} />
-                Gesetzliche Grundlagen auf einen Blick
-              </h2>
-              <ul className={styles.infoList}>
-                <li className={styles.infoItem}>
-                  <Check size={18} className={styles.checkIcon} />
-                  <span>
-                    <strong>Neue Minijob-Grenze (603 € ab 2026):</strong> Die monatliche Verdienstgrenze 
-                    steigt zum 01.01.2026 auf 603,00 € (Jahresgrenze: 7.236 €), direkt gekoppelt an den Mindestlohn von 13,90 €/h.
-                  </span>
-                </li>
-                <li className={styles.infoItem}>
-                  <Check size={18} className={styles.checkIcon} />
-                  <span>
-                    <strong>Rentenversicherungspflicht (3,6 %):</strong> Im Minijob zahlt der Arbeitnehmer standardmäßig 
-                    3,6 % Eigenanteil ({result.category === 'minijob' && !rvBefreit ? result.formatted.rvContribution : 'max. 21,71 €'}), 
-                    um volle Beitragszeiten und Reha-Ansprüche zu erwerben.
-                  </span>
-                </li>
-                <li className={styles.infoItem}>
-                  <Check size={18} className={styles.checkIcon} />
-                  <span>
-                    <strong>Befreiungsantrag (§ 6 Abs. 1b SGB VI):</strong> Auf schriftlichen Antrag beim Arbeitgeber 
-                    erfolgt die Befreiung. Es gilt: Netto = Brutto (0,00 € Abzug).
-                  </span>
-                </li>
-                <li className={styles.infoItem}>
-                  <Check size={18} className={styles.checkIcon} />
-                  <span>
-                    <strong>Arbeitgeberabgaben Gewerbe (~31,2 %):</strong> Gewerbliche Betriebe entrichten pauschal 
-                    ca. 31,2 % an die Minijob-Zentrale (15 % RV, 13 % KV, 2 % Steuer zzgl. Umlagen).
-                  </span>
-                </li>
-                <li className={styles.infoItem}>
-                  <Check size={18} className={styles.checkIcon} />
-                  <span>
-                    <strong>Übergangsbereich (603,01 € bis 2.000 €):</strong> Im Midijob steigen die 
-                    Arbeitnehmer-Sozialabgaben stufenweise von ca. 11 % auf rund 20,5 % an.
-                  </span>
-                </li>
-              </ul>
-            </div>
+        {/* 3. 4 Solid Stat Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full my-6">
+          <div className={`${styles.kpiCard} ${styles.kpiCardRed} w-full`}>
+            <span className={`${styles.kpiValue} break-words`}>603,00 €</span>
+            <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Minijob-Grenze 2026</span>
+            <p className={`${styles.kpiDesc} break-words`}>Gültig seit 01.01.2026 (7.236 € Jahresverdienstgrenze)</p>
+          </div>
+          <div className={`${styles.kpiCard} ${styles.kpiCardPurple} w-full`}>
+            <span className={`${styles.kpiValue} break-words`}>13,90 €</span>
+            <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Gesetzlicher Mindestlohn</span>
+            <p className={`${styles.kpiDesc} break-words`}>Gesetzliche Untergrenze für alle Branchen in Deutschland</p>
+          </div>
+          <div className={`${styles.kpiCard} ${styles.kpiCardAmber} w-full`}>
+            <span className={`${styles.kpiValue} break-words`}>3,6 %</span>
+            <span className={`${styles.kpiLabel} break-words hyphens-auto`}>RV-Eigenanteil Minijobber</span>
+            <p className={`${styles.kpiDesc} break-words`}>Max. 21,71 €/Monat für vollwertige Rentenansprüche</p>
+          </div>
+          <div className={`${styles.kpiCard} ${styles.kpiCardBlue} w-full`}>
+            <span className={`${styles.kpiValue} break-words`}>~31,2 %</span>
+            <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Arbeitgeberabgaben</span>
+            <p className={`${styles.kpiDesc} break-words`}>Pauschale Abgaben im Gewerbe (RV, KV, Steuer, Umlagen)</p>
+          </div>
+        </div>
 
-            <div className={styles.legalReferenceBox}>
-              <strong>Rechtliche Grundlage:</strong> Berechnung gemäß Viertes Buch Sozialgesetzbuch (SGB IV) § 8 
-              (Geringfügige Beschäftigung) und § 20 (Übergangsbereich / Gleitzone). Richtlinien der Spitzenorganisationen der Sozialversicherung.
-            </div>
-          </section>
-
-          {/* Rechte Spalte: Formular-Karte & Resultat-Box */}
-          <section className={`${styles.rightColumn} w-full lg:flex-[1.15] min-w-0`} aria-label="Eingabe und Berechnung">
+        {/* Calculator Split Section (Desktop vs Mobile 2-Column Grid) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-8" id="rechner-top">
+          {/* Left Column (Inputs/Sliders): lg:col-span-7 w-full */}
+          <div className="lg:col-span-7 w-full flex flex-col gap-6">
             {/* Formular-Karte */}
             <div className={`${styles.formCard} w-full`}>
               <div className={styles.cardHeader}>
@@ -947,6 +924,62 @@ export default function MinijobRechner() {
               </div>
             </div>
 
+            {/* Desktop Only: Gesetzliche Grundlagen auf einen Blick & Rechtliche Grundlage */}
+            <div className="hidden lg:flex lg:flex-col lg:gap-6">
+              <div className={`${styles.infoSection} w-full max-w-full`}>
+                <h2 className={`${styles.infoSectionTitle} break-words hyphens-auto`}>
+                  <Info size={18} />
+                  Gesetzliche Grundlagen auf einen Blick
+                </h2>
+                <ul className={styles.infoList}>
+                  <li className={styles.infoItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>
+                      <strong>Neue Minijob-Grenze (603 € ab 2026):</strong> Die monatliche Verdienstgrenze 
+                      steigt zum 01.01.2026 auf 603,00 € (Jahresgrenze: 7.236 €), direkt gekoppelt an den Mindestlohn von 13,90 €/h.
+                    </span>
+                  </li>
+                  <li className={styles.infoItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>
+                      <strong>Rentenversicherungspflicht (3,6 %):</strong> Im Minijob zahlt der Arbeitnehmer standardmäßig 
+                      3,6 % Eigenanteil ({result.category === 'minijob' && !rvBefreit ? result.formatted.rvContribution : 'max. 21,71 €'}), 
+                      um volle Beitragszeiten und Reha-Ansprüche zu erwerben.
+                    </span>
+                  </li>
+                  <li className={styles.infoItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>
+                      <strong>Befreiungsantrag (§ 6 Abs. 1b SGB VI):</strong> Auf schriftlichen Antrag beim Arbeitgeber 
+                      erfolgt die Befreiung. Es gilt: Netto = Brutto (0,00 € Abzug).
+                    </span>
+                  </li>
+                  <li className={styles.infoItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>
+                      <strong>Arbeitgeberabgaben Gewerbe (~31,2 %):</strong> Gewerbliche Betriebe entrichten pauschal 
+                      ca. 31,2 % an die Minijob-Zentrale (15 % RV, 13 % KV, 2 % Steuer zzgl. Umlagen).
+                    </span>
+                  </li>
+                  <li className={styles.infoItem}>
+                    <Check size={18} className={styles.checkIcon} />
+                    <span>
+                      <strong>Übergangsbereich (603,01 € bis 2.000 €):</strong> Im Midijob steigen die 
+                      Arbeitnehmer-Sozialabgaben stufenweise von ca. 11 % auf rund 20,5 % an.
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={styles.legalReferenceBox}>
+                <strong>Rechtliche Grundlage:</strong> Berechnung gemäß Viertes Buch Sozialgesetzbuch (SGB IV) § 8 
+                (Geringfügige Beschäftigung) und § 20 (Übergangsbereich / Gleitzone). Richtlinien der Spitzenorganisationen der Sozialversicherung.
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column (Results/Netto Summary Card): lg:col-span-5 w-full lg:sticky lg:top-6 */}
+          <div className="lg:col-span-5 w-full lg:sticky lg:top-6">
             {/* Ergebnis-Box */}
             <div className={`${styles.resultsBox} w-full`}>
               <div className={styles.resultsHeader}>
@@ -1030,7 +1063,60 @@ export default function MinijobRechner() {
                 </ul>
               </div>
             </div>
-          </section>
+          </div>
+        </div>
+
+        {/* Mobile Only: Gesetzliche Grundlagen & Rechtliche Grundlage (stacked right after calculator on mobile) */}
+        <div className="flex flex-col gap-6 lg:hidden my-6">
+          <div className={`${styles.infoSection} w-full max-w-full`}>
+            <h2 className={`${styles.infoSectionTitle} break-words hyphens-auto`}>
+              <Info size={18} />
+              Gesetzliche Grundlagen auf einen Blick
+            </h2>
+            <ul className={styles.infoList}>
+              <li className={styles.infoItem}>
+                <Check size={18} className={styles.checkIcon} />
+                <span>
+                  <strong>Neue Minijob-Grenze (603 € ab 2026):</strong> Die monatliche Verdienstgrenze 
+                  steigt zum 01.01.2026 auf 603,00 € (Jahresgrenze: 7.236 €), direkt gekoppelt an den Mindestlohn von 13,90 €/h.
+                </span>
+              </li>
+              <li className={styles.infoItem}>
+                <Check size={18} className={styles.checkIcon} />
+                <span>
+                  <strong>Rentenversicherungspflicht (3,6 %):</strong> Im Minijob zahlt der Arbeitnehmer standardmäßig 
+                  3,6 % Eigenanteil ({result.category === 'minijob' && !rvBefreit ? result.formatted.rvContribution : 'max. 21,71 €'}), 
+                  um volle Beitragszeiten und Reha-Ansprüche zu erwerben.
+                </span>
+              </li>
+              <li className={styles.infoItem}>
+                <Check size={18} className={styles.checkIcon} />
+                <span>
+                  <strong>Befreiungsantrag (§ 6 Abs. 1b SGB VI):</strong> Auf schriftlichen Antrag beim Arbeitgeber 
+                  erfolgt die Befreiung. Es gilt: Netto = Brutto (0,00 € Abzug).
+                </span>
+              </li>
+              <li className={styles.infoItem}>
+                <Check size={18} className={styles.checkIcon} />
+                <span>
+                  <strong>Arbeitgeberabgaben Gewerbe (~31,2 %):</strong> Gewerbliche Betriebe entrichten pauschal 
+                  ca. 31,2 % an die Minijob-Zentrale (15 % RV, 13 % KV, 2 % Steuer zzgl. Umlagen).
+                </span>
+              </li>
+              <li className={styles.infoItem}>
+                <Check size={18} className={styles.checkIcon} />
+                <span>
+                  <strong>Übergangsbereich (603,01 € bis 2.000 €):</strong> Im Midijob steigen die 
+                  Arbeitnehmer-Sozialabgaben stufenweise von ca. 11 % auf rund 20,5 % an.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div className={styles.legalReferenceBox}>
+            <strong>Rechtliche Grundlage:</strong> Berechnung gemäß Viertes Buch Sozialgesetzbuch (SGB IV) § 8 
+            (Geringfügige Beschäftigung) und § 20 (Übergangsbereich / Gleitzone). Richtlinien der Spitzenorganisationen der Sozialversicherung.
+          </div>
         </div>
 
         {/* 3. DYNAMISCHE RATGEBER & AKTUELLES 2026 (FIRESTORE SEO ARTICLES) */}
@@ -1270,30 +1356,6 @@ export default function MinijobRechner() {
             </p>
           </div>
 
-          {/* KPI Dashboard - 100% Solid Colors + Pure White Text */}
-          <div className={`${styles.kpiGrid} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full`}>
-            <div className={`${styles.kpiCard} ${styles.kpiCardRed} w-full`}>
-              <span className={`${styles.kpiValue} break-words`}>603,00 €</span>
-              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Minijob-Grenze 2026</span>
-              <p className={`${styles.kpiDesc} break-words`}>Gültig seit 01.01.2026 (7.236 € Jahresverdienstgrenze)</p>
-            </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardPurple} w-full`}>
-              <span className={`${styles.kpiValue} break-words`}>13,90 €</span>
-              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Gesetzlicher Mindestlohn</span>
-              <p className={`${styles.kpiDesc} break-words`}>Gesetzliche Untergrenze für alle Branchen in Deutschland</p>
-            </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardAmber} w-full`}>
-              <span className={`${styles.kpiValue} break-words`}>3,6 %</span>
-              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>RV-Eigenanteil Minijobber</span>
-              <p className={`${styles.kpiDesc} break-words`}>Max. 21,71 €/Monat für vollwertige Rentenansprüche</p>
-            </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardBlue} w-full`}>
-              <span className={`${styles.kpiValue} break-words`}>~31,2 %</span>
-              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Arbeitgeberabgaben</span>
-              <p className={`${styles.kpiDesc} break-words`}>Pauschale Abgaben im Gewerbe (RV, KV, Steuer, Umlagen)</p>
-            </div>
-          </div>
-
           {/* Kapitel 1: Die 603-Euro-Grenze */}
           <article className={styles.guideSection}>
             <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
@@ -1314,7 +1376,7 @@ export default function MinijobRechner() {
             </p>
 
             {/* Historische Entwicklungstabelle mit alternierenden soliden Zeilenfarben */}
-            <div className={`${styles.tableResponsive} w-full overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0`}>
+            <div className="w-full overflow-x-auto my-6 border border-slate-200 rounded-lg">
               <table className={styles.guideTable} aria-label="Historische Entwicklung der Minijob-Grenzwerte">
                 <thead>
                   <tr>
@@ -1589,23 +1651,25 @@ export default function MinijobRechner() {
       </main>
 
       {/* 4. Institutioneller Footer */}
-      <footer className={`${styles.footer} w-full max-w-full`}>
-        <div className={`${styles.footerContent} w-full max-w-6xl mx-auto`}>
-          <div className={styles.footerDisclaimer}>
-            <p className={styles.disclaimerText}>
-              <strong className={styles.disclaimerHeading}>Rechtlicher Hinweis:</strong> Dieser Rechner dient der unverbindlichen Orientierungsberechnung 
-              nach deutschem Sozialversicherungsrecht (SGB IV, SGB VI, MiLoG). Es wird keine Haftung für die Richtigkeit der 
-              Ergebnisse übernommen. Eine rechtliche oder steuerliche Beratung durch Fachanwälte oder Steuerberater wird hierdurch nicht ersetzt.
-            </p>
-            <p className={styles.footerCopyright}>
-              © {new Date().getFullYear()} Minijob-Rechner Portal Deutschland • Gesetzliche Vorgaben 2026 / 2025 / 2024.
-            </p>
-          </div>
-          <div className={styles.footerLinks}>
-            <span className={styles.footerLink}>Minijob-Grenze 2026: 603 €</span>
-            <span className={styles.footerLink}>Mindestlohn: 13,90 €</span>
-            <span className={styles.footerLink}>Übergangsbereich: bis 2.000 €</span>
-            <span className={styles.footerLink}>SGB IV & SGB VI</span>
+      <footer className={`${styles.footer} w-full`}>
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={styles.footerContent}>
+            <div className={styles.footerDisclaimer}>
+              <p className={styles.disclaimerText}>
+                <strong className={styles.disclaimerHeading}>Rechtlicher Hinweis:</strong> Dieser Rechner dient der unverbindlichen Orientierungsberechnung 
+                nach deutschem Sozialversicherungsrecht (SGB IV, SGB VI, MiLoG). Es wird keine Haftung für die Richtigkeit der 
+                Ergebnisse übernommen. Eine rechtliche oder steuerliche Beratung durch Fachanwälte oder Steuerberater wird hierdurch nicht ersetzt.
+              </p>
+              <p className={styles.footerCopyright}>
+                © {new Date().getFullYear()} Minijob-Rechner Portal Deutschland • Gesetzliche Vorgaben 2026 / 2025 / 2024.
+              </p>
+            </div>
+            <div className={styles.footerLinks}>
+              <span className={styles.footerLink}>Minijob-Grenze 2026: 603 €</span>
+              <span className={styles.footerLink}>Mindestlohn: 13,90 €</span>
+              <span className={styles.footerLink}>Übergangsbereich: bis 2.000 €</span>
+              <span className={styles.footerLink}>SGB IV & SGB VI</span>
+            </div>
           </div>
         </div>
       </footer>
