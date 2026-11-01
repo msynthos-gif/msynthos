@@ -43,19 +43,27 @@
   gap: 0.875rem;
 }
 
-/* Amber/Gold Institutional Badge */
+/* Square Favicon Logo Header Emblem */
 .brandEmblem {
-  width: 2.375rem;
-  height: 2.375rem;
-  background-color: #f59e0b; /* Amber-500 */
-  border: 1px solid #d97706; /* Amber-600 */
-  border-radius: 6px;
+  width: 2.625rem;
+  height: 2.625rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px; /* Clean square shape with subtle rounded-md */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #78350f; /* Amber-900 icon */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
+}
+
+.brandLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
 }
 
 .brandTitle {
@@ -713,57 +721,74 @@
 }
 
 .kpiCard {
-  background-color: #ffffff;
-  border: 1.5px solid #e2e8f0;
   border-radius: 8px;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
 .kpiCard:hover {
-  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* 4 Solid Colored Metric Cards with Pure White Text */
+/* Card 1: 603,00 € - Solid Red (#dc2626) */
+.kpiCardRed {
+  background-color: #dc2626 !important;
+  border: 1.5px solid #b91c1c !important;
+}
+
+/* Card 2: 13,90 € - Solid Purple (#7c3aed) */
+.kpiCardPurple {
+  background-color: #7c3aed !important;
+  border: 1.5px solid #6d28d9 !important;
+}
+
+/* Card 3: 3,6 % - Solid Amber / Deep Yellow (#d97706) */
+.kpiCardAmber {
+  background-color: #d97706 !important;
+  border: 1.5px solid #b45309 !important;
+}
+
+/* Card 4: ~31,2 % - Solid Blue (#2563eb) */
+.kpiCardBlue {
+  background-color: #2563eb !important;
+  border: 1.5px solid #1d4ed8 !important;
+}
+
+/* Force pure white text inside all 4 solid KPI cards */
+.kpiCard .kpiValue,
 .kpiValue {
+  color: #ffffff !important;
   font-size: 1.875rem;
   font-weight: 900;
   line-height: 1.1;
   margin: 0 0 0.35rem 0;
   letter-spacing: -0.015em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Distinct High-Contrast Fintech Accents for KPI cards */
-.kpiBlue {
-  color: #2563eb; /* Royal Blue */
-}
-
-.kpiEmerald {
-  color: #059669; /* Emerald-600 */
-}
-
-.kpiIndigo {
-  color: #4f46e5; /* Indigo-600 */
-}
-
-.kpiAmber {
-  color: #d97706; /* Amber-600 */
-}
-
+.kpiCard .kpiLabel,
 .kpiLabel {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #0f172a;
+  color: #ffffff !important;
+  font-size: 0.875rem;
+  font-weight: 800;
   margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
 }
 
+.kpiCard .kpiDesc,
 .kpiDesc {
-  font-size: 0.75rem;
-  color: #64748b;
+  color: #ffffff !important;
+  font-size: 0.775rem;
   margin: 0;
   line-height: 1.45;
+  font-weight: 500;
+  opacity: 0.95;
 }
 
 /* Guide Sections */
@@ -845,23 +870,89 @@
   vertical-align: middle;
 }
 
-.guideTable tr:nth-child(even) td {
-  background-color: #f8fafc;
+/* Table Rows: Alternating 100% Solid Row Colors + Pure White Text */
+/* Row 1: Bis 30.09.2022 - Solid Red (#dc2626) */
+.tableRowRed {
+  background-color: #dc2626 !important;
 }
 
-.guideTable tr:hover td {
-  background-color: #f1f5f9;
+.tableRowRed td {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 1px solid #b91c1c !important;
 }
 
-.guideTable .highlightTh {
-  background-color: #2563eb;
-  color: #ffffff;
+.tableRowRed:hover td {
+  background-color: #b91c1c !important;
 }
 
-.guideTable .highlightTd {
-  background-color: #eff6ff !important;
+/* Row 2: 01.10.2022 – 31.12.2023 - Solid Purple (#7c3aed) */
+.tableRowPurple {
+  background-color: #7c3aed !important;
+}
+
+.tableRowPurple td {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 1px solid #6d28d9 !important;
+}
+
+.tableRowPurple:hover td {
+  background-color: #6d28d9 !important;
+}
+
+/* Row 3: 01.01.2024 – 31.12.2024 - Solid Amber / Deep Yellow (#d97706) */
+.tableRowAmber {
+  background-color: #d97706 !important;
+}
+
+.tableRowAmber td {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 1px solid #b45309 !important;
+}
+
+.tableRowAmber:hover td {
+  background-color: #b45309 !important;
+}
+
+/* Row 4: 01.01.2025 – 31.12.2025 - Solid Emerald Green (#059669) */
+.tableRowGreen {
+  background-color: #059669 !important;
+}
+
+.tableRowGreen td {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 1px solid #047857 !important;
+}
+
+.tableRowGreen:hover td {
+  background-color: #047857 !important;
+}
+
+/* Row 5: Ab 01.01.2026 Aktuell - Solid Blue (#2563eb) */
+.tableRowBlue {
+  background-color: #2563eb !important;
+}
+
+.tableRowBlue td {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
   font-weight: 700;
-  color: #1d4ed8;
+  border-bottom: 1px solid #1d4ed8 !important;
+}
+
+.tableRowBlue td strong {
+  color: #ffffff !important;
+}
+
+.tableRowBlue:hover td {
+  background-color: #1d4ed8 !important;
 }
 
 /* Side-by-Side Comparison Cards */

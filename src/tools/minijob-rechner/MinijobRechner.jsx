@@ -702,8 +702,14 @@ export default function MinijobRechner() {
       <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.brandGroup}>
-            <div className={styles.brandEmblem} aria-hidden="true">
-              <Landmark size={20} />
+            <div className={styles.brandEmblem}>
+              <img 
+                src="/minijob-favicon.png" 
+                alt="Minijob-Rechner Logo" 
+                className={styles.brandLogoImg} 
+                width="40" 
+                height="40" 
+              />
             </div>
             <div>
               <h2 className={styles.brandTitle}>Minijob-Rechner</h2>
@@ -1263,25 +1269,25 @@ export default function MinijobRechner() {
             </p>
           </div>
 
-          {/* KPI Dashboard */}
+          {/* KPI Dashboard - 100% Solid Colors + Pure White Text */}
           <div className={styles.kpiGrid}>
-            <div className={styles.kpiCard}>
-              <span className={`${styles.kpiValue} ${styles.kpiBlue}`}>603,00 €</span>
+            <div className={`${styles.kpiCard} ${styles.kpiCardRed}`}>
+              <span className={styles.kpiValue}>603,00 €</span>
               <span className={styles.kpiLabel}>Minijob-Grenze 2026</span>
               <p className={styles.kpiDesc}>Gültig seit 01.01.2026 (7.236 € Jahresverdienstgrenze)</p>
             </div>
-            <div className={styles.kpiCard}>
-              <span className={`${styles.kpiValue} ${styles.kpiEmerald}`}>13,90 €</span>
+            <div className={`${styles.kpiCard} ${styles.kpiCardPurple}`}>
+              <span className={styles.kpiValue}>13,90 €</span>
               <span className={styles.kpiLabel}>Gesetzlicher Mindestlohn</span>
               <p className={styles.kpiDesc}>Gesetzliche Untergrenze für alle Branchen in Deutschland</p>
             </div>
-            <div className={styles.kpiCard}>
-              <span className={`${styles.kpiValue} ${styles.kpiIndigo}`}>3,6 %</span>
+            <div className={`${styles.kpiCard} ${styles.kpiCardAmber}`}>
+              <span className={styles.kpiValue}>3,6 %</span>
               <span className={styles.kpiLabel}>RV-Eigenanteil Minijobber</span>
               <p className={styles.kpiDesc}>Max. 21,71 €/Monat für vollwertige Rentenansprüche</p>
             </div>
-            <div className={styles.kpiCard}>
-              <span className={`${styles.kpiValue} ${styles.kpiAmber}`}>~31,2 %</span>
+            <div className={`${styles.kpiCard} ${styles.kpiCardBlue}`}>
+              <span className={styles.kpiValue}>~31,2 %</span>
               <span className={styles.kpiLabel}>Arbeitgeberabgaben</span>
               <p className={styles.kpiDesc}>Pauschale Abgaben im Gewerbe (RV, KV, Steuer, Umlagen)</p>
             </div>
@@ -1306,7 +1312,7 @@ export default function MinijobRechner() {
               wird auf volle Euro aufgerundet, womit die neue <strong>Geringfügigkeitsgrenze exakt 603,00 Euro</strong> beträgt.
             </p>
 
-            {/* Historische Entwicklungstabelle */}
+            {/* Historische Entwicklungstabelle mit alternierenden soliden Zeilenfarben */}
             <div className={styles.tableResponsive}>
               <table className={styles.guideTable} aria-label="Historische Entwicklung der Minijob-Grenzwerte">
                 <thead>
@@ -1319,40 +1325,40 @@ export default function MinijobRechner() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className={styles.tableRowRed}>
                     <td>Bis 30.09.2022</td>
                     <td>9,82 € / 10,45 €</td>
                     <td>450,00 €</td>
                     <td>5.400,00 €</td>
                     <td>ca. 43,0 Std.</td>
                   </tr>
-                  <tr>
+                  <tr className={styles.tableRowPurple}>
                     <td>01.10.2022 – 31.12.2023</td>
                     <td>12,00 €</td>
                     <td>520,00 €</td>
                     <td>6.240,00 €</td>
                     <td>ca. 43,3 Std.</td>
                   </tr>
-                  <tr>
+                  <tr className={styles.tableRowAmber}>
                     <td>01.01.2024 – 31.12.2024</td>
                     <td>12,41 €</td>
                     <td>538,00 €</td>
                     <td>6.456,00 €</td>
                     <td>ca. 43,35 Std.</td>
                   </tr>
-                  <tr>
+                  <tr className={styles.tableRowGreen}>
                     <td>01.01.2025 – 31.12.2025</td>
                     <td>12,82 €</td>
                     <td>556,00 €</td>
                     <td>6.672,00 €</td>
                     <td>ca. 43,37 Std.</td>
                   </tr>
-                  <tr>
-                    <td className={styles.highlightTd}>Ab 01.01.2026 (Aktuell)</td>
-                    <td className={styles.highlightTd}>13,90 €</td>
-                    <td className={styles.highlightTd}>603,00 €</td>
-                    <td className={styles.highlightTd}>7.236,00 €</td>
-                    <td className={styles.highlightTd}>ca. 43,38 Std.</td>
+                  <tr className={styles.tableRowBlue}>
+                    <td><strong>Ab 01.01.2026 (Aktuell)</strong></td>
+                    <td><strong>13,90 €</strong></td>
+                    <td><strong>603,00 €</strong></td>
+                    <td><strong>7.236,00 €</strong></td>
+                    <td><strong>ca. 43,38 Std.</strong></td>
                   </tr>
                 </tbody>
               </table>
