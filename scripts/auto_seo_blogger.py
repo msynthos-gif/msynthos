@@ -5,7 +5,6 @@ import time
 import re
 import firebase_admin
 from firebase_admin import credentials, firestore
-import google.generativeai as genai
 
 # 1. Firebase Initialize
 service_account_info = json.loads(os.environ["FIREBASE_SERVICE_ACCOUNT"])
@@ -16,7 +15,15 @@ db = firestore.client()
 
 # 2. Gemini Multi-Model Fallback Setup
 GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
-genai.configure(api_key=GEMINI_API_KEY)
+
+try:
+    from google import genai
+    client = genai.Client(api_key=GEMINI_API_KEY)
+    USE_NEW_GENAI = True
+except ImportError:
+    import google.generativeai as genai
+    genai.configure(api_key=GEMINI_API_KEY)
+    USE_NEW_GENAI = False
 
 MODELS = [
     "gemini-2.5-flash",
@@ -29,8 +36,15 @@ def generate_with_fallback(prompt):
     for model_name in MODELS:
         try:
             print(f"Trying generation with: {model_name}")
-            model = genai.GenerativeModel(model_name)
-            response = model.generate_content(prompt)
+            if USE_NEW_GENAI:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt
+                )
+            else:
+                model = genai.GenerativeModel(model_name)
+                response = model.generate_content(prompt)
+
             if response and response.text:
                 print(f"Success with {model_name}!")
                 return response.text

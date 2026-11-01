@@ -19,7 +19,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install firebase-admin google-generativeai
+          python -m pip install --upgrade pip
+          pip install --no-cache-dir firebase-admin google-genai pydantic
 
       - name: Run SEO Generator
         env:
