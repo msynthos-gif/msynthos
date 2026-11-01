@@ -407,6 +407,7 @@ export default function MinijobRechner() {
         "@type": "WebApplication",
         "name": "Minijob-Rechner 2026",
         "url": "https://msynthos.online/de/minijob-rechner",
+        "image": "https://msynthos.online/minijob-favicon.png",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "All",
         "offers": {
@@ -430,6 +431,7 @@ export default function MinijobRechner() {
         "@type": "Article",
         "headline": activePost.title,
         "description": activePost.excerpt,
+        "image": "https://msynthos.online/minijob-favicon.png",
         "datePublished": activePost.createdAt,
         "dateModified": activePost.createdAt,
         "mainEntityOfPage": {
@@ -459,6 +461,72 @@ export default function MinijobRechner() {
       "@graph": graph
     };
   }, [blogPosts, activePost]);
+
+  // Route-Specific Favicon & Meta Integration (Isolated strictly to the Minijob Rechner tool)
+  useEffect(() => {
+    // 1. Snapshot original favicon link tags from document.head to preserve company branding
+    const existingIconLinks = Array.from(document.querySelectorAll("link[rel*='icon']"));
+    const originalIcons = existingIconLinks.map(link => ({
+      element: link,
+      rel: link.getAttribute('rel'),
+      href: link.getAttribute('href'),
+      type: link.getAttribute('type'),
+      sizes: link.getAttribute('sizes')
+    }));
+
+    // 2. Dynamically set tool-specific favicons while on this route
+    existingIconLinks.forEach(link => {
+      const rel = (link.getAttribute('rel') || '').toLowerCase();
+      const sizes = link.getAttribute('sizes') || '';
+
+      if (rel.includes('apple-touch-icon')) {
+        link.setAttribute('href', '/minijob-apple-touch-icon.png');
+      } else if (sizes === '32x32' || sizes === '16x16') {
+        link.setAttribute('href', '/minijob-favicon-32x32.png');
+        link.setAttribute('type', 'image/png');
+      } else {
+        link.setAttribute('href', '/minijob-favicon.png');
+        link.setAttribute('type', 'image/png');
+      }
+    });
+
+    // Fallback if no icon links were found
+    const createdElements = [];
+    if (!document.querySelector("link[rel='icon']")) {
+      const icon = document.createElement('link');
+      icon.rel = 'icon';
+      icon.type = 'image/png';
+      icon.href = '/minijob-favicon.png';
+      document.head.appendChild(icon);
+      createdElements.push(icon);
+    }
+    if (!document.querySelector("link[rel='apple-touch-icon']")) {
+      const touchIcon = document.createElement('link');
+      touchIcon.rel = 'apple-touch-icon';
+      touchIcon.href = '/minijob-favicon.png';
+      document.head.appendChild(touchIcon);
+      createdElements.push(touchIcon);
+    }
+
+    // 3. Cleanup on unmount: restore original company favicons when navigating away to other company routes
+    return () => {
+      originalIcons.forEach(({ element, rel, href, type, sizes }) => {
+        if (rel) element.setAttribute('rel', rel);
+        if (href) element.setAttribute('href', href);
+        if (type) {
+          element.setAttribute('type', type);
+        } else {
+          element.removeAttribute('type');
+        }
+        if (sizes) {
+          element.setAttribute('sizes', sizes);
+        } else {
+          element.removeAttribute('sizes');
+        }
+      });
+      createdElements.forEach(el => el.remove());
+    };
+  }, []);
 
   // Inject SEO metadata, language tag, Open Graph, Twitter Cards, and dynamic JSON-LD into head
   useEffect(() => {
@@ -490,6 +558,11 @@ export default function MinijobRechner() {
     setMetaTag('property', 'og:type', seoData.ogType);
     setMetaTag('property', 'og:locale', 'de_DE');
     setMetaTag('property', 'og:site_name', 'Msynthos Minijob-Portal');
+    // Open Graph Image for Minijob tool
+    setMetaTag('property', 'og:image', 'https://msynthos.online/minijob-favicon.png');
+    setMetaTag('property', 'og:image:width', '512');
+    setMetaTag('property', 'og:image:height', '512');
+    setMetaTag('property', 'og:image:alt', 'Minijob-Rechner 2026 Icon & Abgabenrechner');
 
     // Article Specific Open Graph tags
     if (activePost) {
@@ -504,6 +577,7 @@ export default function MinijobRechner() {
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', seoData.ogTitle);
     setMetaTag('name', 'twitter:description', seoData.ogDescription);
+    setMetaTag('name', 'twitter:image', 'https://msynthos.online/minijob-favicon.png');
 
     // Canonical link
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -527,6 +601,15 @@ export default function MinijobRechner() {
     return () => {
       const s = document.getElementById('minijob-schema-jsonld');
       if (s) s.remove();
+      // Restore company standard meta tags
+      document.documentElement.lang = 'en';
+      document.title = 'Msynthos | Full-Service Digital Agency & Tech Solutions';
+      const ogImg = document.querySelector('meta[property="og:image"]');
+      if (ogImg) ogImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
+      const twImg = document.querySelector('meta[name="twitter:image"]');
+      if (twImg) twImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
+      const canon = document.querySelector('link[rel="canonical"]');
+      if (canon) canon.setAttribute('href', 'https://msynthos.online/');
     };
   }, [seoData, schemaData, activePost]);
 
@@ -591,6 +674,10 @@ export default function MinijobRechner() {
 
   return (
     <div className={styles.container}>
+      {/* Route-Specific Isolated Favicon & Touch Icon for Minijob Tool */}
+      <link rel="icon" type="image/png" href="/minijob-favicon.png" />
+      <link rel="apple-touch-icon" href="/minijob-favicon.png" />
+
       {/* React 19 Document Metadata Hoisting */}
       <title>{seoData.title}</title>
       <meta name="description" content={seoData.description} />
@@ -603,10 +690,12 @@ export default function MinijobRechner() {
       <meta property="og:type" content={seoData.ogType} />
       <meta property="og:locale" content="de_DE" />
       <meta property="og:site_name" content="Msynthos Minijob-Portal" />
+      <meta property="og:image" content="https://msynthos.online/minijob-favicon.png" />
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoData.ogTitle} />
       <meta name="twitter:description" content={seoData.ogDescription} />
+      <meta name="twitter:image" content="https://msynthos.online/minijob-favicon.png" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       {/* 1. Institutioneller Portal-Header */}
