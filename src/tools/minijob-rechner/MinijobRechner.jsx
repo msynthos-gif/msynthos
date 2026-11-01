@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { 
   Landmark, 
   Check, 
@@ -12,7 +13,10 @@ import {
   Users,
   Clock,
   Calculator,
-  HelpCircle
+  HelpCircle,
+  Calendar,
+  BookOpen,
+  ChevronUp
 } from 'lucide-react';
 import { 
   calculateMinijob, 
@@ -24,6 +28,15 @@ import {
   MINIJOB_LIMIT_2024,
   MIDIJOB_LIMIT 
 } from './minijobLogic';
+import { 
+  db, 
+  collection, 
+  query, 
+  where, 
+  orderBy, 
+  getDocs, 
+  INITIAL_GERMAN_BLOG_POSTS 
+} from './firebase';
 import styles from './styles.module.css';
 
 // Quick-select preset values specified by statutory guidelines
@@ -36,61 +49,81 @@ const PRESET_VALUES = [
   { label: '2.000 €', value: 2000, year: '2026' },
 ];
 
-// Schema.org JSON-LD Structured Data
-const SCHEMA_DATA = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Minijob-Rechner 2026",
-      "url": "https://msynthos.online/de/minijob-rechner",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Wie hoch ist die Minijob-Grenze 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Seit dem 1. Januar 2026 liegt die Geringfügigkeitsgrenze bei monatlich 603 Euro, gekoppelt an den gesetzlichen Mindestlohn von 13,90 Euro pro Stunde."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Wie hoch sind die Abzüge für Minijobber bei der Rentenversicherung?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Minijobber zahlen standardmäßig einen Eigenanteil von 3,6 % zur gesetzlichen Rentenversicherung. Auf schriftlichen Antrag beim Arbeitgeber kann eine vollständige Befreiung erfolgen, sodass Brutto gleich Netto ausgezahlt wird."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Welche Abgaben zahlt ein gewerblicher Arbeitgeber?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Gewerbliche Arbeitgeber entrichten pauschale Abgaben von ca. 31,17 % bis 32,47 % an die Minijob-Zentrale (15 % RV, 13 % KV, 2 % Pauschsteuer zzgl. Umlagen)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Gilt die Verdienstgrenze auch bei mehreren Beschäftigungen?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja. Die Gehälter mehrerer Minijobs werden zusammengerechnet. Übersteigt die Gesamtsumme 603 Euro monatlich, wird die Beschäftigung sozialversicherungspflichtig im Übergangsbereich (Midijob)."
-          }
-        }
-      ]
-    }
-  ]
+// Rich Solid Color Palettes for Blog SEO Cards (NO PILLS, NO GLOW, NO BADGES)
+const BLOG_CARD_PALETTES = [
+  {
+    barColor: '#047857',
+    accentColor: '#047857',
+    btnBg: '#047857',
+    cardBorder: '#059669'
+  },
+  {
+    barColor: '#1d4ed8',
+    accentColor: '#1d4ed8',
+    btnBg: '#1d4ed8',
+    cardBorder: '#2563eb'
+  },
+  {
+    barColor: '#b45309',
+    accentColor: '#b45309',
+    btnBg: '#b45309',
+    cardBorder: '#d97706'
+  },
+  {
+    barColor: '#6d28d9',
+    accentColor: '#6d28d9',
+    btnBg: '#6d28d9',
+    cardBorder: '#7c3aed'
+  }
+];
+
+// Helper to format dates in authoritative German notation
+const formatGermanDate = (dateVal) => {
+  if (!dateVal) return '';
+  try {
+    const d = typeof dateVal === 'object' && dateVal?.toDate ? dateVal.toDate() : new Date(dateVal);
+    if (isNaN(d.getTime())) return String(dateVal);
+    return new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }).format(d);
+  } catch {
+    return String(dateVal);
+  }
 };
+
+// Base Institutional FAQ Schema Entities for Minijob 2026
+const BASE_FAQ_ENTITIES = [
+  {
+    "@type": "Question",
+    "name": "Wie hoch ist die Minijob-Grenze 2026?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Seit dem 1. Januar 2026 liegt die Geringfügigkeitsgrenze bei monatlich 603 Euro, gekoppelt an den gesetzlichen Mindestlohn von 13,90 Euro pro Stunde."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Wie hoch sind die Abzüge für Minijobber bei der Rentenversicherung?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Minijobber zahlen standardmäßig einen Eigenanteil von 3,6 % zur gesetzlichen Rentenversicherung. Auf schriftlichen Antrag beim Arbeitgeber kann eine vollständige Befreiung erfolgen, sodass Brutto gleich Netto ausgezahlt wird."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Welche Abgaben zahlt ein gewerblicher Arbeitgeber?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Gewerbliche Arbeitgeber entrichten pauschale Abgaben von ca. 31,17 % bis 32,47 % an die Minijob-Zentrale (15 % RV, 13 % KV, 2 % Pauschsteuer zzgl. Umlagen)."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Gilt die Verdienstgrenze auch bei mehreren Beschäftigungen?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ja. Die Gehälter mehrerer Minijobs werden zusammengerechnet. Übersteigt die Gesamtsumme 603 Euro monatlich, wird die Beschäftigung sozialversicherungspflichtig im Übergangsbereich (Midijob)."
+    }
+  }
+];
 
 // FAQ Accordion Data (contains the 4 required JSON-LD schema questions + additional institutional legal FAQs)
 const FAQ_ITEMS = [
@@ -227,36 +260,261 @@ export default function MinijobRechner() {
   const [rvBefreit, setRvBefreit] = useState(false);
   const [openFaqs, setOpenFaqs] = useState({ 0: true, 1: true });
 
+  // Dynamic German SEO Blog Posts from Firestore
+  const [blogPosts, setBlogPosts] = useState(INITIAL_GERMAN_BLOG_POSTS);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [postsError, setPostsError] = useState(null);
+  const [expandedPostId, setExpandedPostId] = useState(null);
+  const [activeFaqAccordions, setActiveFaqAccordions] = useState({});
+  const [openArticleFaqs, setOpenArticleFaqs] = useState({});
+  
+  // Display limit: 4 posts initially with Load More functionality
+  const [visiblePostsCount, setVisiblePostsCount] = useState(4);
+
+  // Sliced blog posts currently visible in the grid
+  const displayedPosts = useMemo(() => {
+    return (blogPosts || []).slice(0, visiblePostsCount);
+  }, [blogPosts, visiblePostsCount]);
+
+  const hasMorePosts = (blogPosts || []).length > visiblePostsCount;
+
+  const handleLoadMore = () => {
+    setVisiblePostsCount(prev => prev + 4);
+  };
+
+  const { slug } = useParams();
+
   // Calculation with pure JS engine
   const result = useMemo(() => {
     return calculateMinijob(brutto, rvBefreit, abrechnungsjahr);
   }, [brutto, rvBefreit, abrechnungsjahr]);
 
-  // Inject SEO metadata, canonical link, and JSON-LD schema into head
+  // Query Firestore collection 'german_blog_posts' (status == 'published', ordered by createdAt desc)
   useEffect(() => {
-    document.title = "Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)";
+    let isMounted = true;
+    async function fetchPublishedPosts() {
+      try {
+        setLoadingPosts(true);
+        setPostsError(null);
+        const q = query(
+          collection(db, 'german_blog_posts'),
+          where('status', '==', 'published'),
+          orderBy('createdAt', 'desc')
+        );
+        const snapshot = await getDocs(q);
+        const posts = [];
+        snapshot.forEach(doc => {
+          posts.push({ id: doc.id, ...doc.data() });
+        });
+        if (isMounted) {
+          if (posts.length > 0) {
+            setBlogPosts(posts);
+          } else {
+            setBlogPosts(INITIAL_GERMAN_BLOG_POSTS);
+          }
+        }
+      } catch (err) {
+        console.warn('Hinweis: Firestore-Verbindung nicht aktiv, nutze gepflegte Ratgeber:', err);
+        if (isMounted) {
+          setPostsError('Fachartikel konnten nicht von der Datenbank geladen werden.');
+          setBlogPosts(INITIAL_GERMAN_BLOG_POSTS);
+        }
+      } finally {
+        if (isMounted) {
+          setLoadingPosts(false);
+        }
+      }
+    }
 
-    const setMeta = (name, content) => {
-      let el = document.querySelector(`meta[name="${name}"]`);
+    fetchPublishedPosts();
+    return () => { isMounted = false; };
+  }, []);
+
+  // Determine if a specific blog post is active (either from URL param slug or user expansion)
+  const activePost = useMemo(() => {
+    if (slug) {
+      const match = (blogPosts || []).find(p => p.slug === slug || p.id === slug);
+      if (match) return match;
+    }
+    if (expandedPostId) {
+      const match = (blogPosts || []).find(p => p.id === expandedPostId || p.slug === expandedPostId);
+      if (match) return match;
+    }
+    return null;
+  }, [slug, expandedPostId, blogPosts]);
+
+  // Auto-expand and scroll to article if slug is provided in URL
+  useEffect(() => {
+    if (slug && blogPosts.length > 0) {
+      setExpandedPostId(slug);
+      const postIdx = blogPosts.findIndex(p => p.slug === slug || p.id === slug);
+      if (postIdx >= 4) {
+        setVisiblePostsCount(Math.ceil((postIdx + 1) / 4) * 4);
+      }
+      setTimeout(() => {
+        const articleEl = document.getElementById(`article-${slug}`);
+        if (articleEl) {
+          articleEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }, [slug, blogPosts]);
+
+  // Dynamic SEO metadata based on whether a specific article or the calculator is in focus
+  const seoData = useMemo(() => {
+    if (activePost) {
+      const keywordsStr = Array.isArray(activePost.keywords) 
+        ? `${activePost.keywords.join(', ')}, minijob 2026, 603 euro grenze` 
+        : 'minijob 2026, 603 euro rechner';
+
+      return {
+        title: `${activePost.title} | Minijob-Rechner 2026`,
+        description: activePost.excerpt || 'Fundierter Leitfaden zur aktuellen Minijob-Gesetzeslage 2026.',
+        keywords: keywordsStr,
+        canonical: `https://msynthos.online/ratgeber/${activePost.slug || activePost.id}`,
+        ogTitle: activePost.title,
+        ogDescription: activePost.excerpt,
+        ogType: 'article'
+      };
+    }
+
+    return {
+      title: 'Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)',
+      description: 'Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €).',
+      keywords: 'minijob rechner, minijob rechner 2026, 603 euro rechner, arbeitgeber abgaben minijob, brutto netto minijob, rentenversicherung befreiung minijob rechner, minijob zentrale rechner, midijob rechner 2026, geringfuegigkeitsgrenze 2026',
+      canonical: 'https://msynthos.online/de/minijob-rechner',
+      ogTitle: 'Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)',
+      ogDescription: 'Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €).',
+      ogType: 'website'
+    };
+  }, [activePost]);
+
+  // Compute dynamic Schema.org JSON-LD (WebApplication + Article + FAQPage schemas)
+  const schemaData = useMemo(() => {
+    const dynamicArticleFaqs = (blogPosts || []).flatMap(post => 
+      (post.faqs || []).map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": typeof faq.answer === 'string' ? faq.answer : (faq.answer?.props?.children ? String(faq.answer.props.children) : '')
+        }
+      }))
+    );
+
+    const graph = [
+      {
+        "@type": "WebApplication",
+        "name": "Minijob-Rechner 2026",
+        "url": "https://msynthos.online/de/minijob-rechner",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          ...BASE_FAQ_ENTITIES,
+          ...dynamicArticleFaqs
+        ]
+      }
+    ];
+
+    // If an article is active, inject Article structured data
+    if (activePost) {
+      graph.push({
+        "@type": "Article",
+        "headline": activePost.title,
+        "description": activePost.excerpt,
+        "datePublished": activePost.createdAt,
+        "dateModified": activePost.createdAt,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://msynthos.online/ratgeber/${activePost.slug || activePost.id}`
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Msynthos Fachredaktion",
+          "url": "https://msynthos.online/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Msynthos",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://msynthos.online/logo.jpeg"
+          }
+        },
+        "inLanguage": "de-DE",
+        "keywords": Array.isArray(activePost.keywords) ? activePost.keywords.join(', ') : ''
+      });
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": graph
+    };
+  }, [blogPosts, activePost]);
+
+  // Inject SEO metadata, language tag, Open Graph, Twitter Cards, and dynamic JSON-LD into head
+  useEffect(() => {
+    // 1. Ensure German language attribute
+    document.documentElement.lang = 'de';
+
+    // 2. Document Title
+    document.title = seoData.title;
+
+    // Helper for updating or creating meta tags
+    const setMetaTag = (attrName, attrValue, content) => {
+      let el = document.querySelector(`meta[${attrName}="${attrValue}"]`);
       if (!el) {
         el = document.createElement('meta');
-        el.setAttribute('name', name);
+        el.setAttribute(attrName, attrValue);
         document.head.appendChild(el);
       }
       el.setAttribute('content', content);
     };
 
-    setMeta("description", "Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €).");
-    setMeta("keywords", "minijob rechner, minijob rechner 2026, 603 euro rechner, arbeitgeber abgaben minijob, brutto netto minijob, rentenversicherung befreiung minijob rechner, minijob zentrale rechner, midijob rechner 2026, geringfuegigkeitsgrenze 2026");
+    // Standard SEO Tags
+    setMetaTag('name', 'description', seoData.description);
+    setMetaTag('name', 'keywords', seoData.keywords);
 
+    // Open Graph Tags
+    setMetaTag('property', 'og:title', seoData.ogTitle);
+    setMetaTag('property', 'og:description', seoData.ogDescription);
+    setMetaTag('property', 'og:url', seoData.canonical);
+    setMetaTag('property', 'og:type', seoData.ogType);
+    setMetaTag('property', 'og:locale', 'de_DE');
+    setMetaTag('property', 'og:site_name', 'Msynthos Minijob-Portal');
+
+    // Article Specific Open Graph tags
+    if (activePost) {
+      setMetaTag('property', 'article:published_time', activePost.createdAt || new Date().toISOString());
+      setMetaTag('property', 'article:section', 'Arbeitsrecht & Lohnabrechnung');
+      if (activePost.keywords?.[0]) {
+        setMetaTag('property', 'article:tag', activePost.keywords[0]);
+      }
+    }
+
+    // Twitter Card Tags
+    setMetaTag('name', 'twitter:card', 'summary_large_image');
+    setMetaTag('name', 'twitter:title', seoData.ogTitle);
+    setMetaTag('name', 'twitter:description', seoData.ogDescription);
+
+    // Canonical link
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', "https://msynthos.online/de/minijob-rechner");
+    canonical.setAttribute('href', seoData.canonical);
 
+    // Dynamic JSON-LD structured script
     let script = document.getElementById('minijob-schema-jsonld');
     if (!script) {
       script = document.createElement('script');
@@ -264,13 +522,38 @@ export default function MinijobRechner() {
       script.type = 'application/ld+json';
       document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(SCHEMA_DATA);
+    script.textContent = JSON.stringify(schemaData);
 
     return () => {
       const s = document.getElementById('minijob-schema-jsonld');
       if (s) s.remove();
     };
-  }, []);
+  }, [seoData, schemaData, activePost]);
+
+  const toggleExpandPost = (postId) => {
+    setExpandedPostId(prev => prev === postId ? null : postId);
+  };
+
+  const togglePostFaqsVisibility = (postId) => {
+    setActiveFaqAccordions(prev => ({
+      ...prev,
+      [postId]: !prev[postId]
+    }));
+  };
+
+  const toggleArticleFaq = (faqKey) => {
+    setOpenArticleFaqs(prev => ({
+      ...prev,
+      [faqKey]: !prev[faqKey]
+    }));
+  };
+
+  const scrollToCalculator = () => {
+    const topEl = document.getElementById('rechner-top');
+    if (topEl) {
+      topEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const handleInputChange = (e) => {
     const val = parseFloat(e.target.value);
@@ -309,11 +592,22 @@ export default function MinijobRechner() {
   return (
     <div className={styles.container}>
       {/* React 19 Document Metadata Hoisting */}
-      <title>Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)</title>
-      <meta name="description" content="Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €)." />
-      <meta name="keywords" content="minijob rechner, minijob rechner 2026, 603 euro rechner, arbeitgeber abgaben minijob, brutto netto minijob, rentenversicherung befreiung minijob rechner, minijob zentrale rechner, midijob rechner 2026, geringfuegigkeitsgrenze 2026" />
-      <link rel="canonical" href="https://msynthos.online/de/minijob-rechner" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_DATA) }} />
+      <title>{seoData.title}</title>
+      <meta name="description" content={seoData.description} />
+      <meta name="keywords" content={seoData.keywords} />
+      <link rel="canonical" href={seoData.canonical} />
+      {/* Open Graph Tags */}
+      <meta property="og:title" content={seoData.ogTitle} />
+      <meta property="og:description" content={seoData.ogDescription} />
+      <meta property="og:url" content={seoData.canonical} />
+      <meta property="og:type" content={seoData.ogType} />
+      <meta property="og:locale" content="de_DE" />
+      <meta property="og:site_name" content="Msynthos Minijob-Portal" />
+      {/* Twitter Cards */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={seoData.ogTitle} />
+      <meta name="twitter:description" content={seoData.ogDescription} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       {/* 1. Institutioneller Portal-Header */}
       <header className={styles.header}>
@@ -336,7 +630,7 @@ export default function MinijobRechner() {
 
       {/* 2. Hauptbereich: Zwei-Spalten-Layout */}
       <main className={styles.main}>
-        <div className={styles.layoutGrid}>
+        <div className={styles.layoutGrid} id="rechner-top">
           {/* Linke Spalte: Behördliche Informationshierarchie & Vertrauensbasis */}
           <section className={styles.leftColumn} aria-labelledby="heading-overview">
             <div className={styles.badge2026}>
@@ -644,7 +938,231 @@ export default function MinijobRechner() {
           </section>
         </div>
 
-        {/* 3. Ausführlicher SEO Ratgeber & Leitfaden */}
+        {/* 3. DYNAMISCHE RATGEBER & AKTUELLES 2026 (FIRESTORE SEO ARTICLES) */}
+        <section id="ratgeber-aktuelles" className={styles.blogSection} aria-labelledby="blog-section-heading">
+          <div className={styles.blogHeader}>
+            <h2 id="blog-section-heading" className={styles.blogSectionTitle}>
+              <BookOpen size={24} style={{ color: '#047857' }} />
+              Ratgeber & Aktuelles 2026
+            </h2>
+            <p className={styles.blogSectionSubtitle}>
+              Fundierte Fachartikel zu Arbeitsrecht, Mindestlohn 13,90 € und gesetzlichen Minijob-Regelungen. 
+              Dynamisch aus der Fachdatenbank aktualisiert.
+            </p>
+          </div>
+
+          {/* Error Banner (falls Firestore offline ist, zeigen wir verlässliche Fallbacks) */}
+          {postsError && (
+            <div className={styles.blogErrorBanner} role="alert">
+              <AlertCircle size={18} />
+              <span>{postsError} Es werden verifizierte gesetzliche Referenzartikel angezeigt.</span>
+            </div>
+          )}
+
+          {/* Loading Skeletons */}
+          {loadingPosts ? (
+            <div className={styles.blogGrid}>
+              {[1, 2, 3].map((n) => (
+                <div key={n} className={styles.blogSkeletonCard}>
+                  <div className={styles.skeletonLine} style={{ height: '14px', width: '45%' }} />
+                  <div className={styles.skeletonLine} style={{ height: '22px', width: '85%' }} />
+                  <div className={styles.skeletonLine} style={{ height: '16px', width: '100%' }} />
+                  <div className={styles.skeletonLine} style={{ height: '16px', width: '92%' }} />
+                  <div className={styles.skeletonLine} style={{ height: '26px', width: '50%', marginTop: '1rem' }} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.blogGrid}>
+              {displayedPosts.map((post, index) => {
+                const palette = BLOG_CARD_PALETTES[index % BLOG_CARD_PALETTES.length];
+                const postId = post.id || post.slug;
+                const isExpanded = expandedPostId === postId;
+                const showPostFaqs = Boolean(activeFaqAccordions[postId]);
+
+                return (
+                  <article 
+                    key={postId} 
+                    id={`article-${postId}`}
+                    className={styles.blogCard}
+                    style={{ borderTop: `4px solid ${palette.barColor}` }}
+                  >
+                    <div className={styles.blogCardContent}>
+                      {/* Metadaten: Datum & Lesezeit */}
+                      <div className={styles.blogMetaRow}>
+                        <div className={styles.blogMetaItem}>
+                          <Calendar size={13} className={styles.blogMetaIcon} style={{ color: palette.accentColor }} />
+                          <span>{formatGermanDate(post.createdAt)}</span>
+                        </div>
+                        <div className={styles.blogMetaItem}>
+                          <Clock size={13} className={styles.blogMetaIcon} style={{ color: palette.accentColor }} />
+                          <span>{post.readTime || '5 Min. Lesezeit'}</span>
+                        </div>
+                      </div>
+
+                      {/* Titel */}
+                      <h3 className={styles.blogCardTitle}>
+                        {post.title}
+                      </h3>
+
+                      {/* Auszug / Excerpt */}
+                      <p className={styles.blogCardExcerpt}>
+                        {post.excerpt}
+                      </p>
+
+                      {/* Keywords Tags (Rechteckig, solide Farben - KEINE Pills, KEINE Badges) */}
+                      {Array.isArray(post.keywords) && post.keywords.length > 0 && (
+                        <div className={styles.blogKeywordsList} aria-label="Schlagwörter">
+                          {post.keywords.map((kw, kwIdx) => (
+                            <span key={kwIdx} className={styles.blogKeywordTag}>
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Aktionsleiste */}
+                      <div className={styles.blogActionsRow}>
+                        <button
+                          type="button"
+                          onClick={() => toggleExpandPost(postId)}
+                          className={styles.blogPrimaryBtn}
+                          style={{ backgroundColor: palette.btnBg }}
+                          aria-expanded={isExpanded}
+                        >
+                          <BookOpen size={15} />
+                          <span>{isExpanded ? 'Artikel schließen' : 'Vollständigen Artikel lesen'}</span>
+                        </button>
+
+                        {Array.isArray(post.faqs) && post.faqs.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => togglePostFaqsVisibility(postId)}
+                            className={`${styles.blogSecondaryBtn} ${showPostFaqs ? styles.blogSecondaryBtnActive : ''}`}
+                            aria-expanded={showPostFaqs}
+                          >
+                            <HelpCircle size={14} style={{ color: palette.accentColor }} />
+                            <span>{post.faqs.length} FAQs</span>
+                            <ChevronDown 
+                              size={14} 
+                              className={`${styles.faqChevron} ${showPostFaqs ? styles.faqChevronOpen : ''}`} 
+                            />
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Vollständiger HTML-Artikel (aufklappbar) */}
+                      {isExpanded && post.contentHtml && (
+                        <div className={styles.blogExpandedSection}>
+                          <div 
+                            className={styles.blogArticleHtml} 
+                            dangerouslySetInnerHTML={{ __html: post.contentHtml }} 
+                          />
+                          
+                          <div className={styles.blogArticleCta} style={{ borderLeftColor: palette.barColor }}>
+                            <div>
+                              <strong>Minijob 2026 selbst berechnen:</strong> Nutzen Sie unseren kostenlosen Rechner oben, um Ihre individuellen Abzüge und Nettoansprüche exakt zu berechnen.
+                            </div>
+                            <button 
+                              type="button"
+                              onClick={scrollToCalculator} 
+                              className={styles.blogScrollCtaBtn}
+                              style={{ backgroundColor: palette.btnBg }}
+                            >
+                              <Calculator size={14} />
+                              <span>Zum Rechner</span>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* FAQ-Akkordeon zum Artikel */}
+                      {showPostFaqs && Array.isArray(post.faqs) && post.faqs.length > 0 && (
+                        <div className={styles.articleFaqAccordion}>
+                          <h4 className={styles.articleFaqHeading}>
+                            <HelpCircle size={15} style={{ color: palette.accentColor }} />
+                            <span>Häufige Fragen zu diesem Ratgeber</span>
+                          </h4>
+                          <div className={styles.articleFaqList}>
+                            {post.faqs.map((faq, faqIdx) => {
+                              const faqKey = `${postId}-${faqIdx}`;
+                              const isOpen = Boolean(openArticleFaqs[faqKey]);
+                              return (
+                                <div 
+                                  key={faqIdx} 
+                                  className={`${styles.articleFaqItem} ${isOpen ? styles.articleFaqItemOpen : ''}`}
+                                  style={isOpen ? { borderLeft: `3px solid ${palette.barColor}` } : {}}
+                                >
+                                  <button
+                                    type="button"
+                                    onClick={() => toggleArticleFaq(faqKey)}
+                                    className={styles.articleFaqQuestionBtn}
+                                    aria-expanded={isOpen}
+                                  >
+                                    <span>{faq.question}</span>
+                                    <ChevronDown 
+                                      size={15} 
+                                      className={`${styles.faqChevron} ${isOpen ? styles.faqChevronOpen : ''}`} 
+                                    />
+                                  </button>
+                                  {isOpen && (
+                                    <div className={styles.articleFaqAnswer}>
+                                      {faq.answer}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Steuerung zur kompakten Anzeige: Weitere Artikel laden */}
+          {!loadingPosts && blogPosts.length > 4 && (
+            <div className={styles.blogLoadMoreContainer}>
+              {hasMorePosts ? (
+                <div className={styles.blogLoadMoreWrapper}>
+                  <button
+                    type="button"
+                    onClick={handleLoadMore}
+                    className={styles.blogLoadMoreBtn}
+                    id="btn-load-more-posts"
+                  >
+                    <ChevronDown size={16} />
+                    <span>Weitere Artikel laden ({blogPosts.length - visiblePostsCount} weitere)</span>
+                  </button>
+                  <span className={styles.blogPostCountLabel}>
+                    Zeige {displayedPosts.length} von {blogPosts.length} Fachartikeln
+                  </span>
+                </div>
+              ) : (
+                <div className={styles.blogAllLoadedWrapper}>
+                  <div className={styles.blogAllLoadedNotice}>
+                    <Check size={14} className={styles.allLoadedCheckIcon} />
+                    <span>Alle {blogPosts.length} Fachartikel sind geladen</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setVisiblePostsCount(4)}
+                    className={styles.blogCollapseBtn}
+                    title="Kompakte Ansicht wiederherstellen"
+                  >
+                    <ChevronUp size={14} />
+                    <span>Auf 4 reduzieren</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </section>
+
+        {/* 4. Ausführlicher SEO Ratgeber & Leitfaden */}
         <section id="ratgeber-minijob" className={styles.seoContainer} aria-labelledby="ratgeber-heading">
           <div className={styles.seoHeader}>
             <h2 id="ratgeber-heading" className={styles.seoTitle}>

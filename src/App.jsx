@@ -43,8 +43,10 @@ function App() {
 
   return (
     <Routes>
-      {/* 1. Standalone isolated German utility tool route (renders solely MinijobRechner) */}
+      {/* 1. Standalone isolated German utility tool & SEO blog article routes */}
       <Route path="/de/minijob-rechner" element={<MinijobRechner />} />
+      <Route path="/de/minijob-rechner/:slug" element={<MinijobRechner />} />
+      <Route path="/ratgeber/:slug" element={<MinijobRechner />} />
 
       {/* 2. Main website layout routes (renders main site layout with Navbar, Footer & ChatWidget) */}
       <Route element={<MainSiteLayout />}>

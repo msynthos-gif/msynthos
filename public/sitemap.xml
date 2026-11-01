@@ -2,31 +2,109 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://msynthos.online/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://msynthos.online/about</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://msynthos.online/de/minijob-rechner</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://msynthos.online/services</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/courses</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/about</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://msynthos.online/contact</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://msynthos.online/courses</loc>
-    <lastmod>2026-08-06</lastmod>
+    <loc>https://msynthos.online/ratgeber/urlaubsanspruch-minijob-2026-berechnen</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/urlaubsanspruch-minijob-2026-berechnen</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/ratgeber/minijob-hoechstarbeitszeit-2026-mindestlohn</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/minijob-hoechstarbeitszeit-2026-mindestlohn</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/ratgeber/rentenversicherung-minijob-befreiung-2026</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/rentenversicherung-minijob-befreiung-2026</loc>
+    <lastmod>2026-01-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/ratgeber/zwei-minijobs-gleichzeitig-steuern-2026</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/zwei-minijobs-gleichzeitig-steuern-2026</loc>
+    <lastmod>2026-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/ratgeber/lohnfortzahlung-krankheit-minijob-2026</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/lohnfortzahlung-krankheit-minijob-2026</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/ratgeber/midijob-uebergangsbereich-2026-vorteile</loc>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://msynthos.online/de/minijob-rechner/midijob-uebergangsbereich-2026-vorteile</loc>
+    <lastmod>2025-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
