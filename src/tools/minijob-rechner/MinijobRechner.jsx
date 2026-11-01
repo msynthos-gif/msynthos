@@ -673,7 +673,7 @@ export default function MinijobRechner() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} w-full max-w-full overflow-x-hidden px-4 sm:px-6`}>
       {/* Route-Specific Isolated Favicon & Touch Icon for Minijob Tool */}
       <link rel="icon" type="image/png" href="/minijob-favicon.png" />
       <link rel="apple-touch-icon" href="/minijob-favicon.png" />
@@ -699,8 +699,8 @@ export default function MinijobRechner() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       {/* 1. Institutioneller Portal-Header */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
+      <header className={`${styles.header} w-full max-w-full`}>
+        <div className={`${styles.headerContent} w-full max-w-6xl mx-auto`}>
           <div className={styles.brandGroup}>
             <div className={styles.brandEmblem}>
               <img 
@@ -712,8 +712,8 @@ export default function MinijobRechner() {
               />
             </div>
             <div>
-              <h2 className={styles.brandTitle}>Minijob-Rechner</h2>
-              <p className={styles.brandSubtitle}>Berechnungsportal für geringfügige Beschäftigung & Übergangsbereich</p>
+              <h2 className={`${styles.brandTitle} break-words hyphens-auto`}>Minijob-Rechner</h2>
+              <p className={`${styles.brandSubtitle} break-words`}>Berechnungsportal für geringfügige Beschäftigung & Übergangsbereich</p>
             </div>
           </div>
           <div className={styles.headerMeta}>
@@ -724,26 +724,26 @@ export default function MinijobRechner() {
       </header>
 
       {/* 2. Hauptbereich: Zwei-Spalten-Layout */}
-      <main className={styles.main}>
-        <div className={styles.layoutGrid} id="rechner-top">
+      <main className={`${styles.main} w-full max-w-6xl mx-auto`}>
+        <div className={`${styles.layoutGrid} flex flex-col lg:flex-row gap-6 w-full`} id="rechner-top">
           {/* Linke Spalte: Behördliche Informationshierarchie & Vertrauensbasis */}
-          <section className={styles.leftColumn} aria-labelledby="heading-overview">
-            <div className={styles.badge2026}>
+          <section className={`${styles.leftColumn} w-full lg:flex-1 min-w-0`} aria-labelledby="heading-overview">
+            <div className={`${styles.badge2026} break-words hyphens-auto`}>
               <Scale size={14} />
               <span>Geringfügigkeitsgrenze 2026: 603 €</span>
             </div>
 
-            <h1 id="heading-overview" className={styles.h1}>
+            <h1 id="heading-overview" className={`${styles.h1} break-words hyphens-auto`}>
               Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben
             </h1>
-            <p className={styles.subtitle}>
+            <p className={`${styles.subtitle} break-words`}>
               Ermitteln Sie die exakte Netto-Auszahlung, den 3,6 % Rentenversicherungs-Eigenanteil 
               nach der neuen <strong>603-Euro-Grenze</strong> (Mindestlohn 13,90 €) sowie die pauschalen 
               Arbeitgeberabgaben (~31,2 %) und den Übergangsbereich nach § 20 SGB IV.
             </p>
 
-            <div className={styles.infoSection}>
-              <h2 className={styles.infoSectionTitle}>
+            <div className={`${styles.infoSection} w-full max-w-full`}>
+              <h2 className={`${styles.infoSectionTitle} break-words hyphens-auto`}>
                 <Info size={18} />
                 Gesetzliche Grundlagen auf einen Blick
               </h2>
@@ -794,11 +794,11 @@ export default function MinijobRechner() {
           </section>
 
           {/* Rechte Spalte: Formular-Karte & Resultat-Box */}
-          <section className={styles.rightColumn} aria-label="Eingabe und Berechnung">
+          <section className={`${styles.rightColumn} w-full lg:flex-[1.15] min-w-0`} aria-label="Eingabe und Berechnung">
             {/* Formular-Karte */}
-            <div className={styles.formCard}>
+            <div className={`${styles.formCard} w-full`}>
               <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>Angaben zur Beschäftigung</h2>
+                <h2 className={`${styles.cardTitle} break-words hyphens-auto`}>Angaben zur Beschäftigung</h2>
                 <p className={styles.cardSubtitle}>Wählen Sie Abrechnungszeitraum und monatlichen Bruttolohn</p>
               </div>
 
@@ -912,7 +912,7 @@ export default function MinijobRechner() {
                     className={styles.standardCheckbox}
                   />
                   <div>
-                    <span className={styles.checkboxTitle}>
+                    <span className={`${styles.checkboxTitle} break-words hyphens-auto`}>
                       Befreiung von der Rentenversicherungspflicht beantragen (§ 6 Abs. 1b SGB VI)
                     </span>
                     <p className={styles.checkboxHelp}>
@@ -948,13 +948,13 @@ export default function MinijobRechner() {
             </div>
 
             {/* Ergebnis-Box */}
-            <div className={styles.resultsBox}>
+            <div className={`${styles.resultsBox} w-full`}>
               <div className={styles.resultsHeader}>
                 <div>
                   <p className={styles.resultsHeaderTitle}>Monatlicher Netto-Auszahlungsbetrag</p>
-                  <p className={styles.resultsNetAmount}>{result.formatted.net}</p>
+                  <p className={`${styles.resultsNetAmount} break-words`}>{result.formatted.net}</p>
                 </div>
-                <div className={styles.statusIndicator}>
+                <div className={`${styles.statusIndicator} break-words hyphens-auto`}>
                   {result.status}
                 </div>
               </div>
@@ -1034,9 +1034,9 @@ export default function MinijobRechner() {
         </div>
 
         {/* 3. DYNAMISCHE RATGEBER & AKTUELLES 2026 (FIRESTORE SEO ARTICLES) */}
-        <section id="ratgeber-aktuelles" className={styles.blogSection} aria-labelledby="blog-section-heading">
+        <section id="ratgeber-aktuelles" className={`${styles.blogSection} w-full`} aria-labelledby="blog-section-heading">
           <div className={styles.blogHeader}>
-            <h2 id="blog-section-heading" className={styles.blogSectionTitle}>
+            <h2 id="blog-section-heading" className={`${styles.blogSectionTitle} break-words hyphens-auto`}>
               <BookOpen size={24} style={{ color: '#047857' }} />
               Ratgeber & Aktuelles 2026
             </h2>
@@ -1056,7 +1056,7 @@ export default function MinijobRechner() {
 
           {/* Loading Skeletons */}
           {loadingPosts ? (
-            <div className={styles.blogGrid}>
+            <div className={`${styles.blogGrid} grid grid-cols-1 md:grid-cols-2 gap-4 w-full`}>
               {[1, 2, 3].map((n) => (
                 <div key={n} className={styles.blogSkeletonCard}>
                   <div className={styles.skeletonLine} style={{ height: '14px', width: '45%' }} />
@@ -1068,7 +1068,7 @@ export default function MinijobRechner() {
               ))}
             </div>
           ) : (
-            <div className={styles.blogGrid}>
+            <div className={`${styles.blogGrid} grid grid-cols-1 md:grid-cols-2 gap-4 w-full`}>
               {displayedPosts.map((post, index) => {
                 const palette = BLOG_CARD_PALETTES[index % BLOG_CARD_PALETTES.length];
                 const postId = post.id || post.slug;
@@ -1079,7 +1079,7 @@ export default function MinijobRechner() {
                   <article 
                     key={postId} 
                     id={`article-${postId}`}
-                    className={styles.blogCard}
+                    className={`${styles.blogCard} w-full`}
                     style={{ borderTop: `4px solid ${palette.barColor}` }}
                   >
                     <div className={styles.blogCardContent}>
@@ -1096,12 +1096,12 @@ export default function MinijobRechner() {
                       </div>
 
                       {/* Titel */}
-                      <h3 className={styles.blogCardTitle}>
+                      <h3 className={`${styles.blogCardTitle} break-words hyphens-auto`}>
                         {post.title}
                       </h3>
 
                       {/* Auszug / Excerpt */}
-                      <p className={styles.blogCardExcerpt}>
+                      <p className={`${styles.blogCardExcerpt} break-words`}>
                         {post.excerpt}
                       </p>
 
@@ -1191,10 +1191,10 @@ export default function MinijobRechner() {
                                   <button
                                     type="button"
                                     onClick={() => toggleArticleFaq(faqKey)}
-                                    className={styles.articleFaqQuestionBtn}
+                                    className={`${styles.articleFaqQuestionBtn} break-words hyphens-auto`}
                                     aria-expanded={isOpen}
                                   >
-                                    <span>{faq.question}</span>
+                                    <span className="break-words hyphens-auto">{faq.question}</span>
                                     <ChevronDown 
                                       size={15} 
                                       className={`${styles.faqChevron} ${isOpen ? styles.faqChevronOpen : ''}`} 
@@ -1258,44 +1258,45 @@ export default function MinijobRechner() {
         </section>
 
         {/* 4. Ausführlicher SEO Ratgeber & Leitfaden */}
-        <section id="ratgeber-minijob" className={styles.seoContainer} aria-labelledby="ratgeber-heading">
+        {/* 4. Ausführlicher SEO Ratgeber & Leitfaden */}
+        <section id="ratgeber-minijob" className={`${styles.seoContainer} w-full max-w-full`} aria-labelledby="ratgeber-heading">
           <div className={styles.seoHeader}>
-            <h2 id="ratgeber-heading" className={styles.seoTitle}>
+            <h2 id="ratgeber-heading" className={`${styles.seoTitle} break-words hyphens-auto`}>
               Umfassender Minijob-Ratgeber 2026: Gesetze, Grenzen & Praxiswissen
             </h2>
-            <p className={styles.seoSubtitle}>
+            <p className={`${styles.seoSubtitle} break-words`}>
               Rechtssicherer Leitfaden für Arbeitnehmer und Arbeitgeber zur 603-Euro-Grenze, 
               den Mindestlohn-Auswirkungen und Beitragsberechnungen nach deutschem Sozialrecht.
             </p>
           </div>
 
           {/* KPI Dashboard - 100% Solid Colors + Pure White Text */}
-          <div className={styles.kpiGrid}>
-            <div className={`${styles.kpiCard} ${styles.kpiCardRed}`}>
-              <span className={styles.kpiValue}>603,00 €</span>
-              <span className={styles.kpiLabel}>Minijob-Grenze 2026</span>
-              <p className={styles.kpiDesc}>Gültig seit 01.01.2026 (7.236 € Jahresverdienstgrenze)</p>
+          <div className={`${styles.kpiGrid} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full`}>
+            <div className={`${styles.kpiCard} ${styles.kpiCardRed} w-full`}>
+              <span className={`${styles.kpiValue} break-words`}>603,00 €</span>
+              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Minijob-Grenze 2026</span>
+              <p className={`${styles.kpiDesc} break-words`}>Gültig seit 01.01.2026 (7.236 € Jahresverdienstgrenze)</p>
             </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardPurple}`}>
-              <span className={styles.kpiValue}>13,90 €</span>
-              <span className={styles.kpiLabel}>Gesetzlicher Mindestlohn</span>
-              <p className={styles.kpiDesc}>Gesetzliche Untergrenze für alle Branchen in Deutschland</p>
+            <div className={`${styles.kpiCard} ${styles.kpiCardPurple} w-full`}>
+              <span className={`${styles.kpiValue} break-words`}>13,90 €</span>
+              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Gesetzlicher Mindestlohn</span>
+              <p className={`${styles.kpiDesc} break-words`}>Gesetzliche Untergrenze für alle Branchen in Deutschland</p>
             </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardAmber}`}>
-              <span className={styles.kpiValue}>3,6 %</span>
-              <span className={styles.kpiLabel}>RV-Eigenanteil Minijobber</span>
-              <p className={styles.kpiDesc}>Max. 21,71 €/Monat für vollwertige Rentenansprüche</p>
+            <div className={`${styles.kpiCard} ${styles.kpiCardAmber} w-full`}>
+              <span className={`${styles.kpiValue} break-words`}>3,6 %</span>
+              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>RV-Eigenanteil Minijobber</span>
+              <p className={`${styles.kpiDesc} break-words`}>Max. 21,71 €/Monat für vollwertige Rentenansprüche</p>
             </div>
-            <div className={`${styles.kpiCard} ${styles.kpiCardBlue}`}>
-              <span className={styles.kpiValue}>~31,2 %</span>
-              <span className={styles.kpiLabel}>Arbeitgeberabgaben</span>
-              <p className={styles.kpiDesc}>Pauschale Abgaben im Gewerbe (RV, KV, Steuer, Umlagen)</p>
+            <div className={`${styles.kpiCard} ${styles.kpiCardBlue} w-full`}>
+              <span className={`${styles.kpiValue} break-words`}>~31,2 %</span>
+              <span className={`${styles.kpiLabel} break-words hyphens-auto`}>Arbeitgeberabgaben</span>
+              <p className={`${styles.kpiDesc} break-words`}>Pauschale Abgaben im Gewerbe (RV, KV, Steuer, Umlagen)</p>
             </div>
           </div>
 
           {/* Kapitel 1: Die 603-Euro-Grenze */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <Calculator size={20} className={styles.sectionIcon} />
               1. Die neue Geringfügigkeitsgrenze ab 2026: Koppelung an den Mindestlohn
             </h3>
@@ -1313,7 +1314,7 @@ export default function MinijobRechner() {
             </p>
 
             {/* Historische Entwicklungstabelle mit alternierenden soliden Zeilenfarben */}
-            <div className={styles.tableResponsive}>
+            <div className={`${styles.tableResponsive} w-full overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0`}>
               <table className={styles.guideTable} aria-label="Historische Entwicklung der Minijob-Grenzwerte">
                 <thead>
                   <tr>
@@ -1367,7 +1368,7 @@ export default function MinijobRechner() {
 
           {/* Kapitel 2: Rentenversicherungspflicht & Befreiung */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <ShieldCheck size={20} className={styles.sectionIcon} />
               2. Rentenversicherungspflicht: 3,6 % Eigenanteil oder Befreiung?
             </h3>
@@ -1380,7 +1381,7 @@ export default function MinijobRechner() {
             <div className={styles.comparisonGrid}>
               <div className={styles.comparisonCard}>
                 <div className={styles.comparisonHeader}>
-                  <h4 className={styles.comparisonTitle}>In der RV-Pflicht verbleiben</h4>
+                  <h4 className={`${styles.comparisonTitle} break-words hyphens-auto`}>In der RV-Pflicht verbleiben</h4>
                   <span className={`${styles.comparisonBadge} ${styles.badgeGewerbe}`}>Empfohlen</span>
                 </div>
                 <ul className={styles.comparisonList}>
@@ -1395,7 +1396,7 @@ export default function MinijobRechner() {
 
               <div className={styles.comparisonCard}>
                 <div className={styles.comparisonHeader}>
-                  <h4 className={styles.comparisonTitle}>Befreiung beantragen (§ 6 SGB VI)</h4>
+                  <h4 className={`${styles.comparisonTitle} break-words hyphens-auto`}>Befreiung beantragen (§ 6 SGB VI)</h4>
                   <span className={`${styles.comparisonBadge} ${styles.badgeHaushalt}`}>Netto-Maximierung</span>
                 </div>
                 <ul className={styles.comparisonList}>
@@ -1418,7 +1419,7 @@ export default function MinijobRechner() {
 
           {/* Kapitel 3: Arbeitgeberabgaben Gewerbe vs. Haushalt */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <Building2 size={20} className={styles.sectionIcon} />
               3. Arbeitgeberabgaben im Detail: Gewerbe vs. Privathaushalt
             </h3>
@@ -1430,7 +1431,7 @@ export default function MinijobRechner() {
             <div className={styles.comparisonGrid}>
               <div className={styles.comparisonCard}>
                 <div className={styles.comparisonHeader}>
-                  <h4 className={styles.comparisonTitle}>Gewerblicher Arbeitgeber</h4>
+                  <h4 className={`${styles.comparisonTitle} break-words hyphens-auto`}>Gewerblicher Arbeitgeber</h4>
                   <span className={`${styles.comparisonBadge} ${styles.badgeGewerbe}`}>ca. 31,2 %</span>
                 </div>
                 <ul className={styles.comparisonList}>
@@ -1449,7 +1450,7 @@ export default function MinijobRechner() {
 
               <div className={styles.comparisonCard}>
                 <div className={styles.comparisonHeader}>
-                  <h4 className={styles.comparisonTitle}>Privathaushalt (Haushaltsscheck)</h4>
+                  <h4 className={`${styles.comparisonTitle} break-words hyphens-auto`}>Privathaushalt (Haushaltsscheck)</h4>
                   <span className={`${styles.comparisonBadge} ${styles.badgeHaushalt}`}>ca. 14,9 %</span>
                 </div>
                 <ul className={styles.comparisonList}>
@@ -1470,7 +1471,7 @@ export default function MinijobRechner() {
 
           {/* Kapitel 4: Der Übergangsbereich / Midijob */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <Scale size={20} className={styles.sectionIcon} />
               4. Der Übergangsbereich (Midijob von 603,01 € bis 2.000,00 €)
             </h3>
@@ -1490,7 +1491,7 @@ export default function MinijobRechner() {
 
           {/* Kapitel 5: Mehrere Beschäftigungen */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <Users size={20} className={styles.sectionIcon} />
               5. Zusammenrechnung bei mehreren Minijobs & Hauptbeschäftigung
             </h3>
@@ -1520,7 +1521,7 @@ export default function MinijobRechner() {
 
           {/* Kapitel 6: Arbeitsrecht & Höchstarbeitszeit */}
           <article className={styles.guideSection}>
-            <h3 className={styles.guideSectionTitle}>
+            <h3 className={`${styles.guideSectionTitle} break-words hyphens-auto`}>
               <Clock size={20} className={styles.sectionIcon} />
               6. Maximale Arbeitszeit & Arbeitsrechte für Minijobber
             </h3>
@@ -1539,7 +1540,7 @@ export default function MinijobRechner() {
 
           {/* Interaktive FAQ Accordion Sektion */}
           <section id="faq-accordions" className={styles.faqSection} aria-labelledby="faq-heading">
-            <h3 id="faq-heading" className={styles.faqSectionTitle}>
+            <h3 id="faq-heading" className={`${styles.faqSectionTitle} break-words hyphens-auto`}>
               <HelpCircle size={22} className={styles.sectionIcon} />
               Häufig gestellte Fragen (FAQ) zum Minijob 2026
             </h3>
@@ -1563,7 +1564,7 @@ export default function MinijobRechner() {
                       aria-controls={`faq-answer-${index}`}
                       id={`faq-btn-${index}`}
                     >
-                      <span>{item.question}</span>
+                      <span className="break-words hyphens-auto">{item.question}</span>
                       <ChevronDown 
                         size={18} 
                         className={`${styles.faqChevron} ${isOpen ? styles.faqChevronOpen : ''}`}
@@ -1588,8 +1589,8 @@ export default function MinijobRechner() {
       </main>
 
       {/* 4. Institutioneller Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
+      <footer className={`${styles.footer} w-full max-w-full`}>
+        <div className={`${styles.footerContent} w-full max-w-6xl mx-auto`}>
           <div className={styles.footerDisclaimer}>
             <p className={styles.disclaimerText}>
               <strong className={styles.disclaimerHeading}>Rechtlicher Hinweis:</strong> Dieser Rechner dient der unverbindlichen Orientierungsberechnung 
