@@ -1591,12 +1591,12 @@ export default function MinijobRechner() {
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerDisclaimer}>
-            <p style={{ margin: '0 0 0.35rem 0' }}>
-              <strong>Rechtlicher Hinweis:</strong> Dieser Rechner dient der unverbindlichen Orientierungsberechnung 
+            <p className={styles.disclaimerText}>
+              <strong className={styles.disclaimerHeading}>Rechtlicher Hinweis:</strong> Dieser Rechner dient der unverbindlichen Orientierungsberechnung 
               nach deutschem Sozialversicherungsrecht (SGB IV, SGB VI, MiLoG). Es wird keine Haftung für die Richtigkeit der 
               Ergebnisse übernommen. Eine rechtliche oder steuerliche Beratung durch Fachanwälte oder Steuerberater wird hierdurch nicht ersetzt.
             </p>
-            <p style={{ margin: 0, color: '#64748b' }}>
+            <p className={styles.footerCopyright}>
               © {new Date().getFullYear()} Minijob-Rechner Portal Deutschland • Gesetzliche Vorgaben 2026 / 2025 / 2024.
             </p>
           </div>
