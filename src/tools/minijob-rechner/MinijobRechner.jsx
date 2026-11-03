@@ -41,12 +41,12 @@ import styles from './styles.module.css';
 
 // Quick-select preset values specified by statutory guidelines
 const PRESET_VALUES = [
-  { label: '250 €', value: 250, year: '2026' },
+  { label: '250 €', value: 250 },
   { label: '538 € (2024)', value: 538, year: '2024' },
   { label: '556 € (2025)', value: 556, year: '2025' },
   { label: '603 € (2026 Grenze)', value: 603, year: '2026' },
-  { label: '1.000 €', value: 1000, year: '2026' },
-  { label: '2.000 €', value: 2000, year: '2026' },
+  { label: '1.000 €', value: 1000 },
+  { label: '2.000 €', value: 2000 },
 ];
 
 // Rich Solid Color Palettes for Blog SEO Cards (NO PILLS, NO GLOW, NO BADGES)
@@ -379,17 +379,32 @@ export default function MinijobRechner() {
     }
 
     return {
-      title: 'Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)',
-      description: 'Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €).',
+      title: 'Minijob-Rechner 2026: Brutto-Netto & Abgaben (603 €)',
+      description: 'Kostenloser Minijob-Rechner 2026 für Arbeitnehmer & Arbeitgeber. Exakte Berechnung der 603-Euro-Grenze, 13,90 € Mindestlohn, Abgaben und Netto-Auszahlung.',
       keywords: 'minijob rechner, minijob rechner 2026, 603 euro rechner, arbeitgeber abgaben minijob, brutto netto minijob, rentenversicherung befreiung minijob rechner, minijob zentrale rechner, midijob rechner 2026, geringfuegigkeitsgrenze 2026',
       canonical: 'https://msynthos.online/de/minijob-rechner',
-      ogTitle: 'Minijob-Rechner 2026: Brutto-Netto & Arbeitgeberabgaben (603 € Grenze)',
-      ogDescription: 'Kostenloser Minijob-Rechner 2026: Berechnen Sie Nettogehalt, 3,6 % Rentenversicherung sowie pauschale Arbeitgeberabgaben nach der neuen 603-Euro-Grenze (Mindestlohn 13,90 €).',
+      ogTitle: 'Minijob-Rechner 2026: Brutto-Netto & Abgaben (603 €)',
+      ogDescription: 'Berechnen Sie Netto-Auszahlung, Rentenversicherungsanteil und Arbeitgeberabgaben nach der neuen 603-Euro-Grenze 2026.',
       ogType: 'website'
     };
   }, [activePost]);
 
-  // Compute dynamic Schema.org JSON-LD (WebApplication + Article + FAQPage schemas)
+  // Specific WebApplication Structured Data per statutory guidelines
+  const webAppSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Minijob-Rechner 2026",
+    "url": "https://msynthos.online/de/minijob-rechner",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }), []);
+
+  // Compute dynamic Schema.org JSON-LD (Article + FAQPage schemas)
   const schemaData = useMemo(() => {
     const dynamicArticleFaqs = (blogPosts || []).flatMap(post => 
       (post.faqs || []).map(faq => ({
@@ -403,19 +418,7 @@ export default function MinijobRechner() {
     );
 
     const graph = [
-      {
-        "@type": "WebApplication",
-        "name": "Minijob-Rechner 2026",
-        "url": "https://msynthos.online/de/minijob-rechner",
-        "image": "https://msynthos.online/minijob-favicon.png",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "All",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
-        }
-      },
+      webAppSchema,
       {
         "@type": "FAQPage",
         "mainEntity": [
@@ -559,7 +562,7 @@ export default function MinijobRechner() {
     setMetaTag('property', 'og:locale', 'de_DE');
     setMetaTag('property', 'og:site_name', 'Msynthos Minijob-Portal');
     // Open Graph Image for Minijob tool
-    setMetaTag('property', 'og:image', 'https://msynthos.online/minijob-favicon.png');
+    setMetaTag('property', 'og:image', 'https://msynthos.online/minijob-logo.webp');
     setMetaTag('property', 'og:image:width', '512');
     setMetaTag('property', 'og:image:height', '512');
     setMetaTag('property', 'og:image:alt', 'Minijob-Rechner 2026 Icon & Abgabenrechner');
@@ -577,9 +580,10 @@ export default function MinijobRechner() {
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', seoData.ogTitle);
     setMetaTag('name', 'twitter:description', seoData.ogDescription);
-    setMetaTag('name', 'twitter:image', 'https://msynthos.online/minijob-favicon.png');
+    setMetaTag('name', 'twitter:image', 'https://msynthos.online/minijob-logo.webp');
+    setMetaTag('name', 'twitter:url', seoData.canonical);
 
-    // Canonical link
+    // Canonical link: strictly point to self
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -588,7 +592,17 @@ export default function MinijobRechner() {
     }
     canonical.setAttribute('href', seoData.canonical);
 
-    // Dynamic JSON-LD structured script
+    // Dynamic JSON-LD structured script for WebApplication
+    let webAppScript = document.getElementById('minijob-schema-webapplication');
+    if (!webAppScript) {
+      webAppScript = document.createElement('script');
+      webAppScript.id = 'minijob-schema-webapplication';
+      webAppScript.type = 'application/ld+json';
+      document.head.appendChild(webAppScript);
+    }
+    webAppScript.textContent = JSON.stringify(webAppSchema);
+
+    // Dynamic JSON-LD structured script for FAQs and articles
     let script = document.getElementById('minijob-schema-jsonld');
     if (!script) {
       script = document.createElement('script');
@@ -599,19 +613,24 @@ export default function MinijobRechner() {
     script.textContent = JSON.stringify(schemaData);
 
     return () => {
-      const s = document.getElementById('minijob-schema-jsonld');
-      if (s) s.remove();
-      // Restore company standard meta tags
-      document.documentElement.lang = 'en';
-      document.title = 'Msynthos | Full-Service Digital Agency & Tech Solutions';
-      const ogImg = document.querySelector('meta[property="og:image"]');
-      if (ogImg) ogImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
-      const twImg = document.querySelector('meta[name="twitter:image"]');
-      if (twImg) twImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
-      const canon = document.querySelector('link[rel="canonical"]');
-      if (canon) canon.setAttribute('href', 'https://msynthos.online/');
+      // ONLY restore company standard meta tags if navigating away from minijob route
+      const currentPath = window.location.pathname;
+      if (!currentPath.startsWith('/de/minijob-rechner') && !currentPath.startsWith('/ratgeber')) {
+        const s1 = document.getElementById('minijob-schema-webapplication');
+        if (s1) s1.remove();
+        const s2 = document.getElementById('minijob-schema-jsonld');
+        if (s2) s2.remove();
+        document.documentElement.lang = 'en';
+        document.title = 'Msynthos | Full-Service Digital Agency & Tech Solutions';
+        const ogImg = document.querySelector('meta[property="og:image"]');
+        if (ogImg) ogImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
+        const twImg = document.querySelector('meta[name="twitter:image"]');
+        if (twImg) twImg.setAttribute('content', 'https://msynthos.online/logo.jpeg');
+        const canon = document.querySelector('link[rel="canonical"]');
+        if (canon) canon.setAttribute('href', 'https://msynthos.online/');
+      }
     };
-  }, [seoData, schemaData, activePost]);
+  }, [seoData, schemaData, webAppSchema, activePost]);
 
   const toggleExpandPost = (postId) => {
     setExpandedPostId(prev => prev === postId ? null : postId);
@@ -675,8 +694,8 @@ export default function MinijobRechner() {
   return (
     <div className={styles.container}>
       {/* Route-Specific Isolated Favicon & Touch Icon for Minijob Tool */}
-      <link rel="icon" type="image/png" href="/minijob-favicon.png" />
-      <link rel="apple-touch-icon" href="/minijob-favicon.png" />
+      <link rel="icon" type="image/png" href="/minijob-logo.webp" />
+      <link rel="apple-touch-icon" href="/minijob-logo.webp" />
 
       {/* React 19 Document Metadata Hoisting */}
       <title>{seoData.title}</title>
@@ -690,12 +709,14 @@ export default function MinijobRechner() {
       <meta property="og:type" content={seoData.ogType} />
       <meta property="og:locale" content="de_DE" />
       <meta property="og:site_name" content="Msynthos Minijob-Portal" />
-      <meta property="og:image" content="https://msynthos.online/minijob-favicon.png" />
+      <meta property="og:image" content="https://msynthos.online/minijob-logo.webp" />
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoData.ogTitle} />
       <meta name="twitter:description" content={seoData.ogDescription} />
-      <meta name="twitter:image" content="https://msynthos.online/minijob-favicon.png" />
+      <meta name="twitter:image" content="https://msynthos.online/minijob-logo.webp" />
+      <meta name="twitter:url" content={seoData.canonical} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
 
       {/* 1. Institutioneller Portal-Header */}
@@ -705,11 +726,13 @@ export default function MinijobRechner() {
             <div className={styles.brandGroup}>
               <div className={styles.brandEmblem}>
                 <img 
-                  src="/minijob-favicon.png" 
+                  src="/minijob-logo.webp" 
                   alt="Minijob-Rechner Logo" 
                   className={styles.brandLogoImg} 
                   width="40" 
                   height="40" 
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <div>
@@ -830,32 +853,38 @@ export default function MinijobRechner() {
                     aria-label="Bruttolohn Schieberegler"
                   />
                   <div className={styles.sliderMarks}>
-                    <button type="button" onClick={() => setBrutto(0)} className={styles.markBtn}>0 €</button>
+                    <button 
+                      type="button" 
+                      onClick={() => setBrutto(0)} 
+                      className={`${styles.markBtn} ${brutto === 0 ? styles.markBtnActive : ''}`}
+                    >
+                      0 €
+                    </button>
                     <button 
                       type="button" 
                       onClick={() => { setAbrechnungsjahr('2024'); setBrutto(538); }} 
-                      className={styles.markBtn}
+                      className={`${styles.markBtn} ${brutto === 538 && abrechnungsjahr === '2024' ? styles.markBtnActive : ''}`}
                     >
                       538 € (2024)
                     </button>
                     <button 
                       type="button" 
                       onClick={() => { setAbrechnungsjahr('2025'); setBrutto(556); }} 
-                      className={styles.markBtn}
+                      className={`${styles.markBtn} ${brutto === 556 && abrechnungsjahr === '2025' ? styles.markBtnActive : ''}`}
                     >
                       556 € (2025)
                     </button>
                     <button 
                       type="button" 
                       onClick={() => { setAbrechnungsjahr('2026'); setBrutto(603); }} 
-                      className={styles.markBtn}
+                      className={`${styles.markBtn} ${brutto === 603 && abrechnungsjahr === '2026' ? styles.markBtnActive : ''}`}
                     >
                       603 € (2026)
                     </button>
                     <button 
                       type="button" 
                       onClick={() => setBrutto(2000)} 
-                      className={styles.markBtn}
+                      className={`${styles.markBtn} ${brutto === 2000 ? styles.markBtnActive : ''}`}
                     >
                       2.000 €
                     </button>
@@ -864,16 +893,19 @@ export default function MinijobRechner() {
 
                 {/* Schnellauswahl Buttons */}
                 <div className={styles.presetsRow}>
-                  {PRESET_VALUES.map((preset) => (
-                    <button
-                      key={preset.label}
-                      type="button"
-                      onClick={() => handlePresetClick(preset)}
-                      className={`${styles.presetBtn} ${brutto === preset.value && abrechnungsjahr === preset.year ? styles.presetBtnActive : ''}`}
-                    >
-                      {preset.label}
-                    </button>
-                  ))}
+                  {PRESET_VALUES.map((preset) => {
+                    const isSelected = brutto === preset.value && (preset.year ? abrechnungsjahr === preset.year : true);
+                    return (
+                      <button
+                        key={preset.label}
+                        type="button"
+                        onClick={() => handlePresetClick(preset)}
+                        className={`${styles.presetBtn} ${isSelected ? styles.presetBtnActive : ''}`}
+                      >
+                        {preset.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -1062,8 +1094,22 @@ export default function MinijobRechner() {
                   <li>ca. 1,2 % Umlagen U1, U2 und Insolvenzgeldumlage ({result.employerEstimate.formattedUmlagen})</li>
                 </ul>
               </div>
+
+              {/* Legal Disclaimer at bottom of Results Card */}
+              <div className={styles.calculatorDisclaimerBox}>
+                <p className={styles.calculatorDisclaimerText}>
+                  Hinweis: Alle Berechnungen erfolgen ohne Gewähr. Dieser Rechner ersetzt keine steuerliche oder rechtliche Beratung gemäß Steuerberatungsgesetz (StBerG).
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Legal Disclaimer clearly visible at bottom of calculator */}
+        <div className={styles.calculatorBottomNotice}>
+          <p className={styles.calculatorBottomNoticeText}>
+            <strong>Hinweis:</strong> Alle Berechnungen erfolgen ohne Gewähr. Dieser Rechner ersetzt keine steuerliche oder rechtliche Beratung gemäß Steuerberatungsgesetz (StBerG).
+          </p>
         </div>
 
         {/* Mobile Only: Gesetzliche Grundlagen & Rechtliche Grundlage (stacked right after calculator on mobile) */}

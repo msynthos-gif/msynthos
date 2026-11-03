@@ -2,7 +2,8 @@
 
 .container {
   min-height: 100vh;
-  background-color: #f1f5f9; /* Warm soft slate outer background */
+  background-color: #f1f5f9;
+  /* Warm soft slate outer background */
   color: #0f172a;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: flex;
@@ -23,7 +24,8 @@
    ===================================================================== */
 
 .header {
-  background-color: #0f172a; /* Deep Slate-900 */
+  background-color: #0f172a;
+  /* Deep Slate-900 */
   border-bottom: 2px solid #1e293b;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
   padding: 1.125rem 0;
@@ -63,7 +65,8 @@
   height: 2.625rem;
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px; /* Clean square shape with subtle rounded-md */
+  border-radius: 6px;
+  /* Clean square shape with subtle rounded-md */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,7 +86,8 @@
 .brandTitle {
   font-size: 1.125rem;
   font-weight: 800;
-  color: #ffffff; /* Crisp white */
+  color: #ffffff;
+  /* Crisp white */
   margin: 0;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -102,7 +106,8 @@
 
 .brandSubtitle {
   font-size: 0.75rem;
-  color: #94a3b8; /* Slate-400 */
+  color: #94a3b8;
+  /* Slate-400 */
   margin: 0.15rem 0 0 0;
   line-height: 1.35;
   overflow-wrap: break-word;
@@ -121,13 +126,16 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: #cbd5e1; /* Slate-300 */
+  color: #cbd5e1;
+  /* Slate-300 */
   font-weight: 500;
 }
 
 .jurisdictionTag {
-  background-color: #1e293b; /* Slate-800 */
-  border: 1px solid #334155; /* Slate-700 */
+  background-color: #1e293b;
+  /* Slate-800 */
+  border: 1px solid #334155;
+  /* Slate-700 */
   color: #f8fafc;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
@@ -189,9 +197,12 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.45rem;
-  background-color: #fef3c7; /* bg-amber-100 */
-  border: 1px solid #fcd34d; /* border-amber-300 */
-  color: #78350f; /* text-amber-900 */
+  background-color: #fef3c7;
+  /* bg-amber-100 */
+  border: 1px solid #fcd34d;
+  /* border-amber-300 */
+  color: #78350f;
+  /* text-amber-900 */
   font-size: 0.775rem;
   font-weight: 600;
   padding: 0.35rem 0.65rem;
@@ -205,14 +216,16 @@
 }
 
 .badge2026 svg {
-  color: #b45309; /* Amber-700 */
+  color: #b45309;
+  /* Amber-700 */
   flex-shrink: 0;
 }
 
 .h1 {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #0f172a; /* Deep Charcoal Slate */
+  color: #0f172a;
+  /* Deep Charcoal Slate */
   letter-spacing: -0.025em;
   line-height: 1.25;
   margin: 0;
@@ -256,9 +269,12 @@
 
 /* Left Info Section (Soft Indigo bg, Solid 4px Royal Blue Left Border) */
 .infoSection {
-  background-color: rgba(238, 242, 255, 0.75); /* bg-indigo-50/70 */
-  border: 1px solid #c7d2fe; /* border-indigo-200 */
-  border-left: 4px solid #4f46e5; /* border-l-4 border-indigo-600 */
+  background-color: rgba(238, 242, 255, 0.75);
+  /* bg-indigo-50/70 */
+  border: 1px solid #c7d2fe;
+  /* border-indigo-200 */
+  border-left: 4px solid #4f46e5;
+  /* border-l-4 border-indigo-600 */
   border-radius: 6px;
   padding: 1.25rem 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -276,7 +292,8 @@
 .infoSectionTitle {
   font-size: 1.0625rem;
   font-weight: 800;
-  color: #312e81; /* Deep Indigo-900 heading */
+  color: #312e81;
+  /* Deep Indigo-900 heading */
   margin: 0 0 1.125rem 0;
   display: flex;
   align-items: center;
@@ -308,12 +325,14 @@
 }
 
 .infoItem strong {
-  color: #1e1b4b; /* Solid Deep Indigo */
+  color: #1e1b4b;
+  /* Solid Deep Indigo */
 }
 
 /* Crisp Royal Blue Checkmarks */
 .checkIcon {
-  color: #2563eb; /* Royal Blue (blue-600) */
+  color: #2563eb;
+  /* Royal Blue (blue-600) */
   flex-shrink: 0;
   margin-top: 0.125rem;
 }
@@ -344,12 +363,17 @@
   gap: 1.75rem;
 }
 
-/* Pure White Card with Crisp Slate Borders and Soft Shadow */
+/* =====================================================================
+   3. FORM CARD & INPUT CONTROLS (Solid Dark Navy #0f172a + 100% White Text)
+   ===================================================================== */
+
+/* Solid Dark Navy Card with 100% White Headings and Labels */
 .formCard {
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1; /* border-slate-300 */
+  background-color: #0f172a !important;
+  /* Solid Dark Navy #0f172a */
+  border: 1.5px solid #1e293b !important;
   border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
   padding: 1.25rem 1rem;
   width: 100%;
   max-width: 100%;
@@ -365,20 +389,21 @@
 .cardHeader {
   margin-bottom: 1.5rem;
   padding-bottom: 0.875rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #1e293b;
 }
 
 .cardTitle {
   font-size: 1.1875rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #ffffff !important;
   margin: 0 0 0.25rem 0;
   letter-spacing: -0.01em;
 }
 
 .cardSubtitle {
   font-size: 0.8125rem;
-  color: #64748b;
+  color: #ffffff !important;
+  opacity: 1 !important;
   margin: 0;
 }
 
@@ -390,20 +415,20 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff !important;
   margin-bottom: 0.5rem;
 }
 
-/* Select Input with Solid Blue Focus Ring */
+/* Select Input with Clean High-Contrast Styling */
 .selectInput {
   width: 100%;
-  background-color: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1;
   border-radius: 6px;
   padding: 0.625rem 0.875rem;
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: #0f172a;
+  font-weight: 700;
+  color: #0f172a !important;
   font-family: inherit;
   outline: none;
   cursor: pointer;
@@ -413,7 +438,12 @@
 
 .selectInput:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+.selectInput option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
 
 .inputGroup {
@@ -427,8 +457,8 @@
   position: absolute;
   left: 0.75rem;
   font-size: 1rem;
-  font-weight: 700;
-  color: #64748b;
+  font-weight: 800;
+  color: #334155 !important;
   pointer-events: none;
 }
 
@@ -439,16 +469,16 @@
   }
 }
 
-/* Gross Input: Large, Crisp Text with Solid Blue Focus Ring */
+/* Gross Input: High-contrast crisp white background with bold dark text */
 .numberInput {
   width: 100%;
-  background-color: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  background-color: #ffffff !important;
+  border: 2px solid #cbd5e1;
   border-radius: 6px;
   padding: 0.65rem 2.75rem 0.65rem 2rem;
   font-size: 1.125rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #0f172a !important;
   font-family: inherit;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -464,15 +494,15 @@
 
 .numberInput:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
 }
 
 .currencySuffix {
   position: absolute;
   right: 0.75rem;
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #64748b;
+  font-weight: 800;
+  color: #334155 !important;
   pointer-events: none;
 }
 
@@ -493,7 +523,7 @@
   appearance: none;
   width: 100%;
   height: 6px;
-  background: #cbd5e1;
+  background: #334155;
   border-radius: 3px;
   outline: none;
   cursor: pointer;
@@ -502,92 +532,106 @@
 .rangeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: #2563eb; /* Vibrant Royal Blue */
+  background: #2563eb;
+  /* Vibrant Royal Blue */
   border: 2.5px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: transform 0.1s ease;
 }
 
 .rangeSlider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .sliderMarks {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.625rem;
   font-size: 0.75rem;
-  color: #64748b;
+  color: #ffffff !important;
 }
 
 .markBtn {
-  background: none;
-  border: none;
-  padding: 0;
+  background-color: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  font-weight: 600;
-  color: #475569;
+  font-weight: 700;
+  color: #ffffff !important;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s ease;
+  text-decoration: none;
+  transition: all 0.15s ease;
 }
 
 .markBtn:hover {
-  color: #2563eb;
+  background-color: #334155;
+  border-color: #64748b;
+  color: #ffffff !important;
+}
+
+.markBtnActive {
+  background-color: #2563eb !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.4);
 }
 
 /* Controls & Preset Buttons */
 .presetsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
+  gap: 0.5rem;
+  margin-top: 1.125rem;
 }
 
-/* Inactive Preset: Clean White Background, Slate-700 text, 1px solid Slate-300 Border */
+/* Unselected Preset: Solid Clean Background with Clear White Text */
 .presetBtn {
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  color: #334155;
-  padding: 0.45rem 0.75rem;
+  background-color: #1e293b;
+  /* Solid Slate-800 */
+  border: 1.5px solid #475569;
+  color: #ffffff !important;
+  padding: 0.5rem 0.85rem;
   border-radius: 6px;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.15s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .presetBtn:hover {
-  background-color: #f8fafc;
-  border-color: #94a3b8;
-  color: #0f172a;
+  background-color: #334155;
+  border-color: #64748b;
+  color: #ffffff !important;
 }
 
-/* Active Preset: Solid Vibrant Royal Blue */
+/* Active Preset: Vibrant Solid Royal Blue (#2563eb) with Bold White Text */
 .presetBtnActive {
-  background-color: #2563eb !important; /* bg-blue-600 */
-  border-color: #2563eb !important;
+  background-color: #2563eb !important;
+  border-color: #3b82f6 !important;
   color: #ffffff !important;
-  font-weight: 700;
-  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.35);
+  font-weight: 800 !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.45);
 }
 
 /* Checkbox Card */
 .checkboxCard {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background-color: #1e293b;
+  /* Solid Slate-800 */
+  border: 1.5px solid #334155;
   border-radius: 6px;
   padding: 1.125rem;
-  margin-top: 1.25rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  margin-top: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .checkboxLabelRow {
@@ -598,8 +642,8 @@
 }
 
 .standardCheckbox {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
   margin-top: 0.15rem;
   accent-color: #2563eb;
   cursor: pointer;
@@ -608,13 +652,14 @@
 .checkboxTitle {
   font-size: 0.875rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff !important;
   line-height: 1.35;
 }
 
 .checkboxHelp {
   font-size: 0.8125rem;
-  color: #475569;
+  color: #ffffff !important;
+  opacity: 1 !important;
   margin-top: 0.375rem;
   line-height: 1.45;
 }
@@ -628,46 +673,71 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  color: #ffffff !important;
+}
+
+.statusNotice span,
+.statusNotice strong {
+  color: #ffffff !important;
 }
 
 .noticeIcon {
   flex-shrink: 0;
   margin-top: 2px;
+  color: #ffffff !important;
 }
 
 .noticeWarning {
-  background-color: #fffbeb;
-  border: 1px solid #fcd34d;
-  color: #92400e;
+  background-color: #9a3412;
+  /* Solid deep amber/orange */
+  border: 1px solid #c2410c;
+  color: #ffffff !important;
 }
 
 .noticeSuccess {
-  background-color: #f0fdf4;
-  border: 1px solid #86efac;
-  color: #166534;
+  background-color: #065f46;
+  /* Solid deep emerald green */
+  border: 1px solid #059669;
+  color: #ffffff !important;
 }
 
 /* =====================================================================
-   4. RESULTS DISPLAY BOX (Distinct Solid Deep Dark Slate Container)
+   4. RESULTS DISPLAY BOX (Solid Deep Emerald Green #047857 + 100% White Text)
    ===================================================================== */
 
 .resultsBox {
-  background-color: #0f172a; /* Solid Deep Dark Slate (bg-slate-900) */
-  border: 1px solid #1e293b;
+  background-color: #047857 !important;
+  /* 100% Solid Deep Emerald Green (5.64:1 WCAG AA Contrast with Pure White Text) */
+  border: 2px solid #065f46 !important;
   border-radius: 8px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  color: #ffffff !important;
+}
+
+/* Force all text, labels, numbers, and elements in the Netto results box to 100% pure white */
+.resultsBox,
+.resultsBox *,
+.resultsBox p,
+.resultsBox span,
+.resultsBox td,
+.resultsBox th,
+.resultsBox strong,
+.resultsBox li,
+.resultsBox div {
+  color: #ffffff !important;
 }
 
 .resultsHeader {
-  background-color: #020617; /* Solid Dark Slate-950 top banner */
-  color: #ffffff;
+  background-color: #064e3b !important;
+  /* Solid Darker Forest Emerald Banner (10.2:1 WCAG AAA Contrast) */
+  color: #ffffff !important;
   padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 2px solid #065f46 !important;
   box-sizing: border-box;
 }
 
@@ -683,37 +753,38 @@
 
 .resultsHeaderTitle {
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #94a3b8; /* Slate-400 */
+  color: #ffffff !important;
   margin: 0 0 0.35rem 0;
 }
 
-/* Netto Auszahlungsbetrag: Bold, Solid Emerald Green */
+/* Netto Auszahlungsbetrag: Prominently Highlighted in 100% Pure White */
 .resultsNetAmount {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 900;
-  color: #34d399; /* text-emerald-400 */
+  color: #ffffff !important;
   line-height: 1.1;
   margin: 0;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 @media (min-width: 640px) {
   .resultsNetAmount {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
   }
 }
 
 .statusIndicator {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid #334155;
-  color: #f8fafc;
+  background-color: #064e3b !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
   padding: 0.4rem 0.75rem;
   border-radius: 6px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;
   width: 100%;
   max-width: 100%;
@@ -724,16 +795,17 @@
 @media (min-width: 640px) {
   .statusIndicator {
     width: auto;
-    max-width: 220px;
+    max-width: 240px;
     text-align: right;
     padding: 0.4rem 0.85rem;
   }
 }
 
-/* Breakdown Table inside Dark Container */
+/* Breakdown Table inside Solid Deep Emerald Green Container */
 .tableContainer {
   padding: 1rem;
-  background-color: #0f172a; /* Slate-900 */
+  background-color: #047857 !important;
+  /* Solid Dark Emerald Green with 5.64:1 contrast for pure white text */
   box-sizing: border-box;
 }
 
@@ -750,69 +822,109 @@
 }
 
 .dataTable tr {
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 .dataTable td {
   padding: 0.75rem 0;
+  color: #ffffff !important;
 }
 
 .dataLabel {
-  font-weight: 500;
-  color: #94a3b8; /* Slate-400 */
+  font-weight: 600;
+  color: #ffffff !important;
 }
 
 .dataValue {
   text-align: right;
-  font-weight: 700;
-  color: #f8fafc; /* Crisp white-slate */
+  font-weight: 800;
+  color: #ffffff !important;
 }
 
-/* Deductions (RV / Abzüge): Highlighted in Soft Rose/Crimson */
+/* Deductions (RV / Abzüge): 100% Pure White text as requested */
 .deductionText {
-  color: #fb7185 !important; /* text-rose-400 */
-  font-weight: 700;
+  color: #ffffff !important;
+  font-weight: 800;
 }
 
 /* Total Net Row */
 .totalRow td {
-  border-top: 2px solid #34d399; /* Emerald Green divider */
+  border-top: 2.5px solid #ffffff !important;
   border-bottom: none;
   padding-top: 0.875rem;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 1.0625rem;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .totalNetValue {
-  color: #34d399 !important; /* text-emerald-400 */
-  font-size: 1.25rem;
+  color: #ffffff !important;
+  font-size: 1.35rem;
   font-weight: 900;
 }
 
-/* Employer Note in Dark Container */
+/* Employer Note: Solid Darker Emerald Container with 100% Pure White text */
 .employerNote {
-  background-color: #020617; /* Dark Slate-950 */
-  border-top: 1px solid #1e293b;
+  background-color: #064e3b !important;
+  /* Solid Darker Forest Emerald with 10.2:1 contrast against pure white */
+  border-top: 2px solid #065f46 !important;
   padding: 1.125rem 1.75rem;
   font-size: 0.8125rem;
-  color: #94a3b8;
+  color: #ffffff !important;
   line-height: 1.55;
 }
 
 .employerNote strong {
-  color: #f8fafc;
+  color: #ffffff !important;
+  font-weight: 800;
 }
 
 .employerBreakdownList {
   margin: 0.5rem 0 0 0;
   padding-left: 1.25rem;
-  color: #cbd5e1;
+  color: #ffffff !important;
   font-size: 0.75rem;
 }
 
 .employerBreakdownList li {
   margin-bottom: 0.25rem;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Legal Disclaimer inside Calculator Results Card */
+.calculatorDisclaimerBox {
+  background-color: #064e3b !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+  padding: 0.75rem 1.25rem;
+  box-sizing: border-box;
+}
+
+.calculatorDisclaimerText {
+  font-size: 0.725rem;
+  line-height: 1.45;
+  color: #ffffff !important;
+  margin: 0;
+  text-align: center;
+}
+
+/* Legal Disclaimer callout directly under calculator section */
+.calculatorBottomNotice {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin: 1.25rem 0 2rem 0;
+  box-sizing: border-box;
+}
+
+.calculatorBottomNoticeText {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+  font-weight: 500;
 }
 
 /* =====================================================================
@@ -821,8 +933,10 @@
 
 .seoContainer {
   margin-top: 3.5rem;
-  background-color: #ffffff; /* Clean white card */
-  border: 1px solid #e2e8f0; /* Crisp slate-200 border */
+  background-color: #ffffff;
+  /* Clean white card */
+  border: 1px solid #e2e8f0;
+  /* Crisp slate-200 border */
   border-radius: 8px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
   padding: 2.5rem 2rem;
@@ -835,7 +949,8 @@
 }
 
 .seoHeader {
-  border-bottom: 2px solid #2563eb; /* Vibrant Royal Blue Accent */
+  border-bottom: 2px solid #2563eb;
+  /* Vibrant Royal Blue Accent */
   padding-bottom: 1.25rem;
   margin-bottom: 2rem;
 }
@@ -843,7 +958,8 @@
 .seoTitle {
   font-size: 1.625rem;
   font-weight: 800;
-  color: #0f172a; /* Deep Slate */
+  color: #0f172a;
+  /* Deep Slate */
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.015em;
   line-height: 1.25;
@@ -851,7 +967,8 @@
 
 .seoSubtitle {
   font-size: 0.9375rem;
-  color: #475569; /* Crisp Slate-600 */
+  color: #475569;
+  /* Crisp Slate-600 */
   margin: 0;
   line-height: 1.55;
 }
@@ -910,10 +1027,10 @@
   border: 1.5px solid #6d28d9 !important;
 }
 
-/* Card 3: 3,6 % - Solid Amber / Deep Yellow (#d97706) */
+/* Card 3: 3,6 % - Solid Deep Amber (#b45309 for WCAG AA compliance) */
 .kpiCardAmber {
-  background-color: #d97706 !important;
-  border: 1.5px solid #b45309 !important;
+  background-color: #b45309 !important;
+  border: 1.5px solid #92400e !important;
 }
 
 /* Card 4: ~31,2 % - Solid Blue (#2563eb) */
@@ -974,13 +1091,15 @@
 }
 
 .sectionIcon {
-  color: #2563eb; /* Royal Blue */
+  color: #2563eb;
+  /* Royal Blue */
   flex-shrink: 0;
 }
 
 .guideParagraph {
   font-size: 0.9375rem;
-  color: #475569; /* Crisp Slate-600 */
+  color: #475569;
+  /* Crisp Slate-600 */
   line-height: 1.65;
   margin: 0 0 1rem 0;
 }
@@ -1021,7 +1140,8 @@
 }
 
 .guideTable th {
-  background-color: #0f172a; /* Dark Slate Header */
+  background-color: #0f172a;
+  /* Dark Slate Header */
   color: #ffffff;
   padding: 0.875rem 1rem;
   font-weight: 700;
@@ -1070,20 +1190,20 @@
   background-color: #6d28d9 !important;
 }
 
-/* Row 3: 01.01.2024 – 31.12.2024 - Solid Amber / Deep Yellow (#d97706) */
+/* Row 3: 01.01.2024 – 31.12.2024 - Solid Deep Amber (#b45309 for WCAG AA compliance) */
 .tableRowAmber {
-  background-color: #d97706 !important;
+  background-color: #b45309 !important;
 }
 
 .tableRowAmber td {
-  background-color: #d97706 !important;
+  background-color: #b45309 !important;
   color: #ffffff !important;
   font-weight: 600;
-  border-bottom: 1px solid #b45309 !important;
+  border-bottom: 1px solid #92400e !important;
 }
 
 .tableRowAmber:hover td {
-  background-color: #b45309 !important;
+  background-color: #92400e !important;
 }
 
 /* Row 4: 01.01.2025 – 31.12.2025 - Solid Emerald Green (#059669) */
@@ -1251,7 +1371,7 @@
 
 .faqSectionSubtitle {
   font-size: 0.9375rem;
-  color: #64748b;
+  color: #475569;
   margin: 0 0 1.5rem 0;
   line-height: 1.5;
 }
@@ -1322,7 +1442,8 @@
   padding: 1.25rem 1.25rem 1.5rem 1.25rem;
   background-color: #ffffff;
   font-size: 0.9375rem;
-  color: #475569; /* Crisp Slate-600 */
+  color: #475569;
+  /* Crisp Slate-600 */
   line-height: 1.65;
 }
 
@@ -1361,12 +1482,15 @@
    ===================================================================== */
 
 .footer {
-  background-color: #0b192c; /* Deep Rich Navy Blue Background */
-  border-top: 2px solid #1e3a8a; /* Navy Blue Accent Border */
+  background-color: #0b192c;
+  /* Deep Rich Navy Blue Background */
+  border-top: 2px solid #1e3a8a;
+  /* Navy Blue Accent Border */
   padding: 2.5rem 0;
   margin-top: auto;
   font-size: 0.8125rem;
-  color: #cbd5e1; /* Slate-300 for optimal high contrast on navy */
+  color: #cbd5e1;
+  /* Slate-300 for optimal high contrast on navy */
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
   width: 100%;
   box-sizing: border-box;
@@ -1404,7 +1528,8 @@
 
 .footerCopyright {
   margin: 0;
-  color: #94a3b8; /* Soft slate */
+  color: #94a3b8;
+  /* Soft slate */
   font-size: 0.775rem;
 }
 
@@ -1416,7 +1541,8 @@
 }
 
 .footerLink {
-  color: #93c5fd; /* Soft sky blue */
+  color: #93c5fd;
+  /* Soft sky blue */
   background-color: rgba(30, 58, 138, 0.4);
   border: 1px solid rgba(147, 197, 253, 0.25);
   padding: 0.3rem 0.65rem;
@@ -1675,8 +1801,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .blogArticleHtml {
@@ -1879,7 +2012,7 @@
 
 .blogPostCountLabel {
   font-size: 0.8125rem;
-  color: #64748b;
+  color: #334155 !important;
   font-weight: 600;
   letter-spacing: 0.01em;
 }

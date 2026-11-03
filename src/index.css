@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,7 +11,7 @@
   --color-accent-bright: #1A3A6B;
   --color-border-light: #D9DDE3;
   --color-border-hover: #B8C0CC;
-  
+
   /* Fallbacks to prevent component breaking */
   --color-bg-dark: #F7F8FA;
   --color-accent: #2D4A7A;
@@ -38,7 +37,8 @@ html {
 }
 
 /* Lenis smooth scrolling rules */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -81,14 +81,17 @@ html.lenis, html.lenis body {
 .scrollbar-navy::-webkit-scrollbar {
   width: 5px;
 }
+
 .scrollbar-navy::-webkit-scrollbar-track {
   background: rgba(14, 26, 46, 0.05);
   border-radius: 4px;
 }
+
 .scrollbar-navy::-webkit-scrollbar-thumb {
   background: #0E1A2E;
   border-radius: 4px;
 }
+
 .scrollbar-navy::-webkit-scrollbar-thumb:hover {
   background: #1A3A6B;
 }
@@ -155,7 +158,7 @@ html.lenis, html.lenis body {
 
 /* Background animated grid */
 .grid-bg {
-  background-image: 
+  background-image:
     linear-gradient(rgba(14, 26, 46, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(14, 26, 46, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -163,7 +166,7 @@ html.lenis, html.lenis body {
 }
 
 .grid-bg-navy {
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -175,6 +178,7 @@ html.lenis, html.lenis body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -186,24 +190,63 @@ html.lenis, html.lenis body {
 
 /* Hero ambient glow orb drift animations */
 @keyframes hero-drift-1 {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(40px, -30px); }
-  50% { transform: translate(-20px, 50px); }
-  75% { transform: translate(30px, 20px); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(40px, -30px);
+  }
+
+  50% {
+    transform: translate(-20px, 50px);
+  }
+
+  75% {
+    transform: translate(30px, 20px);
+  }
 }
 
 @keyframes hero-drift-2 {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-35px, 25px); }
-  50% { transform: translate(45px, -15px); }
-  75% { transform: translate(-25px, -40px); }
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-35px, 25px);
+  }
+
+  50% {
+    transform: translate(45px, -15px);
+  }
+
+  75% {
+    transform: translate(-25px, -40px);
+  }
 }
 
 @keyframes hero-drift-3 {
-  0%, 100% { transform: translate(-50%, -50%); }
-  25% { transform: translate(calc(-50% + 30px), calc(-50% - 45px)); }
-  50% { transform: translate(calc(-50% - 40px), calc(-50% + 25px)); }
-  75% { transform: translate(calc(-50% + 20px), calc(-50% + 35px)); }
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
+  25% {
+    transform: translate(calc(-50% + 30px), calc(-50% - 45px));
+  }
+
+  50% {
+    transform: translate(calc(-50% - 40px), calc(-50% + 25px));
+  }
+
+  75% {
+    transform: translate(calc(-50% + 20px), calc(-50% + 35px));
+  }
 }
 
 .hero-orb-1 {
@@ -223,6 +266,7 @@ html.lenis, html.lenis body {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
