@@ -122,3 +122,16 @@ slug = data["slug"]
 doc_ref = db.collection("german_blog_posts").document(slug)
 doc_ref.set(data)
 print(f"Successfully published blog post: '{data['title']}' to Firestore collection 'german_blog_posts'.")
+
+# Also save local backup copy to ensure repository sync
+try:
+    posts_dir = os.path.join(os.path.dirname(__file__), "..", "public", "posts")
+    os.makedirs(posts_dir, exist_ok=True)
+    post_backup_path = os.path.join(posts_dir, f"{slug}.json")
+    backup_payload = {k: v for k, v in data.items() if k != "createdAt"}
+    backup_payload["createdAt"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    with open(post_backup_path, "w", encoding="utf-8") as f:
+        json.dump(backup_payload, f, ensure_ascii=False, indent=2)
+    print(f"Saved local backup: {post_backup_path}")
+except Exception as e:
+    print(f"Warning: could not write local backup: {e}")

@@ -1,7 +1,3 @@
-[[edge_functions]]
-  path = "/de/minijob-rechner/"
-  function = "trailing-slash"
-
 [[redirects]]
   from = "/de/minijob-rechner/"
   to = "/de/minijob-rechner"
