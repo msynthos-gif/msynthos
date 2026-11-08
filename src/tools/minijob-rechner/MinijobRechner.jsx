@@ -465,6 +465,18 @@ export default function MinijobRechner() {
     };
   }, [blogPosts, activePost]);
 
+  // Client-side URL normalization: Ensure trailing slash is stripped from address bar
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const { pathname, search, hash } = window.location;
+      if (pathname === '/de/minijob-rechner/') {
+        window.history.replaceState(null, '', '/de/minijob-rechner' + search + hash);
+      } else if (pathname.startsWith('/de/minijob-rechner/') && pathname.endsWith('/')) {
+        window.history.replaceState(null, '', pathname.slice(0, -1) + search + hash);
+      }
+    }
+  }, []);
+
   // Route-Specific Favicon & Meta Integration (Isolated strictly to the Minijob Rechner tool)
   useEffect(() => {
     // 1. Snapshot original favicon link tags from document.head to preserve company branding

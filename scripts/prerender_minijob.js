@@ -80,18 +80,51 @@ function run() {
 
   const transformed = transformHtml(baseHtml);
 
-  // Write to public/de/minijob-rechner/index.html (bundled by Vite)
-  const publicDir = path.resolve(ROOT_DIR, 'public', 'de', 'minijob-rechner');
-  fs.mkdirSync(publicDir, { recursive: true });
-  fs.writeFileSync(path.resolve(publicDir, 'index.html'), transformed, 'utf-8');
-  console.log('[Prerender] Generated public/de/minijob-rechner/index.html');
+  // 1. Write flat pre-rendered HTML file to public/de/minijob-rechner.html
+  // (Flat file prevents Netlify from treating /de/minijob-rechner as a directory and appending a trailing slash)
+  const publicDeDir = path.resolve(ROOT_DIR, 'public', 'de');
+  fs.mkdirSync(publicDeDir, { recursive: true });
+  fs.writeFileSync(path.resolve(publicDeDir, 'minijob-rechner.html'), transformed, 'utf-8');
+  console.log('[Prerender] Generated public/de/minijob-rechner.html');
 
-  // If dist exists, write to dist/de/minijob-rechner/index.html as well
-  const distDir = path.resolve(ROOT_DIR, 'dist', 'de', 'minijob-rechner');
+  // Clean up legacy directory public/de/minijob-rechner/ if it exists to avoid directory routing collisions
+  const legacyPublicSubdir = path.resolve(ROOT_DIR, 'public', 'de', 'minijob-rechner');
+  if (fs.existsSync(legacyPublicSubdir)) {
+    fs.rmSync(legacyPublicSubdir, { recursive: true, force: true });
+    console.log('[Prerender] Cleaned up legacy directory public/de/minijob-rechner/');
+  }
+
+  // 2. If dist exists, write to dist/de/minijob-rechner.html
   if (fs.existsSync(path.resolve(ROOT_DIR, 'dist'))) {
-    fs.mkdirSync(distDir, { recursive: true });
-    fs.writeFileSync(path.resolve(distDir, 'index.html'), transformed, 'utf-8');
-    console.log('[Prerender] Generated dist/de/minijob-rechner/index.html');
+    const distDeDir = path.resolve(ROOT_DIR, 'dist', 'de');
+    fs.mkdirSync(distDeDir, { recursive: true });
+    fs.writeFileSync(path.resolve(distDeDir, 'minijob-rechner.html'), transformed, 'utf-8');
+    console.log('[Prerender] Generated dist/de/minijob-rechner.html');
+
+    const legacyDistSubdir = path.resolve(ROOT_DIR, 'dist', 'de', 'minijob-rechner');
+    if (fs.existsSync(legacyDistSubdir)) {
+      fs.rmSync(legacyDistSubdir, { recursive: true, force: true });
+      console.log('[Prerender] Cleaned up legacy directory dist/de/minijob-rechner/');
+    }
+  }
+
+  // 3. Ensure public/_redirects has explicit force-redirect rules
+  const redirectsContent = `# Force permanent 301 trailing-slash redirect for Minijob Rechner to prevent duplicate indexing in GSC
+/de/minijob-rechner/   /de/minijob-rechner   301!
+
+# Serve pre-rendered Minijob Rechner HTML for exact route and sub-routes
+/de/minijob-rechner    /de/minijob-rechner.html   200
+/de/minijob-rechner/*  /de/minijob-rechner.html   200
+
+# SPA wildcard fallback
+/*                     /index.html                200
+`;
+  fs.writeFileSync(path.resolve(ROOT_DIR, 'public', '_redirects'), redirectsContent, 'utf-8');
+  console.log('[Prerender] Updated public/_redirects');
+
+  if (fs.existsSync(path.resolve(ROOT_DIR, 'dist'))) {
+    fs.writeFileSync(path.resolve(ROOT_DIR, 'dist', '_redirects'), redirectsContent, 'utf-8');
+    console.log('[Prerender] Updated dist/_redirects');
   }
 }
 

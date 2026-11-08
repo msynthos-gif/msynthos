@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Outlet } from 'react-router-dom'
+import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -45,6 +45,7 @@ function App() {
     <Routes>
       {/* 1. Standalone isolated German utility tool & SEO blog article routes */}
       <Route path="/de/minijob-rechner" element={<MinijobRechner />} />
+      <Route path="/de/minijob-rechner/" element={<Navigate to="/de/minijob-rechner" replace />} />
       <Route path="/de/minijob-rechner/:slug" element={<MinijobRechner />} />
       <Route path="/ratgeber/:slug" element={<MinijobRechner />} />
 
