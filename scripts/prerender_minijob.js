@@ -25,8 +25,21 @@ const WEB_APP_SCHEMA = {
   }
 };
 
+function getArticles() {
+  const articlesPath = path.resolve(ROOT_DIR, 'src', 'data', 'german_blog_posts.json');
+  if (fs.existsSync(articlesPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(articlesPath, 'utf-8'));
+    } catch (e) {
+      console.warn('[Prerender] Could not parse german_blog_posts.json:', e.message);
+    }
+  }
+  return [];
+}
+
 function transformHtml(sourceHtml) {
   let html = sourceHtml;
+  const articles = getArticles();
 
   // 1. Language attribute
   html = html.replace(/<html lang="[^"]*"/i, '<html lang="de"');
@@ -63,8 +76,41 @@ function transformHtml(sourceHtml) {
   // 7. Remove root agency schema to keep Minijob WebApplication schema clean and primary
   html = html.replace(/<!-- JSON-LD Structured Data[\s\S]*?<\/script>/i, '');
 
-  // 8. Inject Schema.org WebApplication JSON-LD before </head>
-  const schemaScript = `    <!-- Schema.org WebApplication Structured Data -->\n    <script type="application/ld+json">\n${JSON.stringify(WEB_APP_SCHEMA, null, 2)}\n    </script>\n  `;
+  // 8. Build complete Schema.org graph: WebApplication + ItemList (all articles) + FAQPage
+  const dynamicFaqs = articles.flatMap(post => 
+    (post.faqs || []).map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": typeof faq.answer === 'string' ? faq.answer : ''
+      }
+    }))
+  );
+
+  const fullSchemaGraph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      WEB_APP_SCHEMA,
+      {
+        "@type": "ItemList",
+        "name": "Minijob 2026 Fachratgeber & Gesetzesleitfäden",
+        "numberOfItems": articles.length,
+        "itemListElement": articles.map((art, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "name": art.title,
+          "url": `https://msynthos.online/ratgeber/${art.slug}`
+        }))
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": dynamicFaqs
+      }
+    ]
+  };
+
+  const schemaScript = `    <!-- Schema.org WebApplication, Articles ItemList & FAQs Structured Data -->\n    <script type="application/ld+json">\n${JSON.stringify(fullSchemaGraph, null, 2)}\n    </script>\n  `;
   html = html.replace('</head>', `${schemaScript}</head>`);
 
   return html;

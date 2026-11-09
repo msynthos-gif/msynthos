@@ -80,9 +80,29 @@ const FALLBACK_POSTS = [
 ];
 
 /**
- * Fetch published posts from Firestore REST API
+ * Fetch published posts from local JSON database and Firestore REST API
  */
 async function fetchPublishedPosts() {
+  const postMap = new Map();
+
+  // 1. Read from primary source of truth: src/data/german_blog_posts.json
+  const jsonPath = path.resolve(ROOT_DIR, 'src', 'data', 'german_blog_posts.json');
+  if (fs.existsSync(jsonPath)) {
+    try {
+      const localPosts = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+      for (const p of localPosts) {
+        if (p.slug) {
+          const lastmod = (p.createdAt || new Date().toISOString()).split('T')[0];
+          postMap.set(p.slug, { slug: p.slug, lastmod });
+        }
+      }
+      console.log(`[Sitemap] Loaded ${postMap.size} articles from src/data/german_blog_posts.json`);
+    } catch (err) {
+      console.warn('[Sitemap] Warning reading local articles JSON:', err.message);
+    }
+  }
+
+  // 2. Query Firestore for any additional live posts
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 4000);
@@ -99,7 +119,6 @@ async function fetchPublishedPosts() {
     if (response.ok) {
       const data = await response.json();
       const rawDocs = data.documents || [];
-      const posts = [];
 
       for (const doc of rawDocs) {
         const fields = doc.fields || {};
@@ -110,21 +129,25 @@ async function fetchPublishedPosts() {
           const createdAt = fields.createdAt?.timestampValue || new Date().toISOString();
           const lastmod = createdAt.split('T')[0];
           if (slug) {
-            posts.push({ slug, lastmod });
+            postMap.set(slug, { slug, lastmod });
           }
         }
       }
-
-      if (posts.length > 0) {
-        console.log(`[Sitemap] Fetched ${posts.length} published blog posts from Firestore.`);
-        return posts;
-      }
     }
   } catch (err) {
-    console.info(`[Sitemap] Note: Firestore live query not reachable (${err.message}). Using statutory reference articles.`);
+    console.info(`[Sitemap] Note: Firestore remote query not reachable (${err.message}). Using verified articles.`);
   }
 
-  return FALLBACK_POSTS;
+  // Fallback if empty
+  if (postMap.size === 0) {
+    for (const fb of FALLBACK_POSTS) {
+      postMap.set(fb.slug, fb);
+    }
+  }
+
+  const result = Array.from(postMap.values());
+  console.log(`[Sitemap] Total blog articles included in sitemap: ${result.length}`);
+  return result;
 }
 
 /**

@@ -744,6 +744,7 @@ if db:
         print(f"[Firestore] Warning writing to Firestore: {fe}. Local backup will preserve content.")
 
 # 7. Always save local backup copy to ensure repository sync & Netlify build deployment
+backup_payload = {}
 try:
     posts_dir = os.path.join(os.path.dirname(__file__), "..", "public", "posts")
     os.makedirs(posts_dir, exist_ok=True)
@@ -755,5 +756,35 @@ try:
     print(f"[Local Sync] Successfully saved local backup: {post_backup_path}")
 except Exception as e:
     print(f"[Local Sync] Warning: could not write local backup: {e}")
+
+# 8. Append / Update main articles JSON array file (src/data/german_blog_posts.json) rendered by UI
+try:
+    articles_json_path = os.path.join(os.path.dirname(__file__), "..", "src", "data", "german_blog_posts.json")
+    articles = []
+    if os.path.exists(articles_json_path):
+        with open(articles_json_path, "r", encoding="utf-8") as f:
+            articles = json.load(f)
+
+    # Format clean post object for the UI
+    clean_article = {k: v for k, v in data.items() if k != "createdAt"}
+    clean_article["id"] = slug
+    clean_article["createdAt"] = backup_payload.get("createdAt", time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+    if "status" not in clean_article:
+        clean_article["status"] = "published"
+
+    # Check if article already exists by slug
+    existing_idx = next((i for i, a in enumerate(articles) if a.get("slug") == slug), None)
+    if existing_idx is not None:
+        articles[existing_idx] = clean_article
+        print(f"[Articles Sync] Updated existing article in {articles_json_path}")
+    else:
+        articles.insert(0, clean_article)
+        print(f"[Articles Sync] Prepended new article '{clean_article['title']}' to {articles_json_path} (Total: {len(articles)})")
+
+    with open(articles_json_path, "w", encoding="utf-8") as f:
+        json.dump(articles, f, ensure_ascii=False, indent=2)
+    print(f"[Articles Sync] Successfully saved {len(articles)} articles to src/data/german_blog_posts.json")
+except Exception as ae:
+    print(f"[Articles Sync] Warning updating articles JSON: {ae}")
 
 print("Auto-blogger completed successfully with exit code 0.")

@@ -308,7 +308,15 @@ export default function MinijobRechner() {
         });
         if (isMounted) {
           if (posts.length > 0) {
-            setBlogPosts(posts);
+            const map = new Map();
+            INITIAL_GERMAN_BLOG_POSTS.forEach(p => map.set(p.slug || p.id, p));
+            posts.forEach(p => map.set(p.slug || p.id, { ...map.get(p.slug || p.id), ...p }));
+            const merged = Array.from(map.values()).sort((a, b) => {
+              const tA = new Date(a.createdAt || 0).getTime();
+              const tB = new Date(b.createdAt || 0).getTime();
+              return tB - tA;
+            });
+            setBlogPosts(merged);
           } else {
             setBlogPosts(INITIAL_GERMAN_BLOG_POSTS);
           }
