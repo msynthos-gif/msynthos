@@ -5,6 +5,7 @@ import time
 import re
 import firebase_admin
 from firebase_admin import credentials, firestore
+from openai import OpenAI
 
 # 1. Firebase Initialize
 service_account_info = json.loads(os.environ["FIREBASE_SERVICE_ACCOUNT"])
@@ -13,46 +14,50 @@ if not firebase_admin._apps:
     firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-# 2. Gemini Multi-Model Fallback Setup
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+# 2. OpenRouter OpenAI-Compatible Client Setup
+OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
+if not OPENROUTER_API_KEY:
+    raise ValueError("OPENROUTER_API_KEY environment variable is not set.")
 
-try:
-    from google import genai
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    USE_NEW_GENAI = True
-except ImportError:
-    import google.generativeai as genai
-    genai.configure(api_key=GEMINI_API_KEY)
-    USE_NEW_GENAI = False
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
+client = OpenAI(
+    base_url=OPENROUTER_BASE_URL,
+    api_key=OPENROUTER_API_KEY,
+    default_headers={
+        "HTTP-Referer": "https://msynthos.online",
+        "X-Title": "Msynthos Minijob Rechner"
+    }
+)
+
+# OpenRouter Free Models with Automatic Fallback
 MODELS = [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-2.0-flash-lite",
-    "gemini-flash-latest",
-    "gemini-flash-lite-latest"
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "deepseek/deepseek-chat:free",
+    "qwen/qwen-2.5-72b-instruct:free"
 ]
 
 def generate_with_fallback(prompt):
     for model_name in MODELS:
         try:
-            print(f"Trying generation with: {model_name}")
-            if USE_NEW_GENAI:
-                response = client.models.generate_content(
-                    model=model_name,
-                    contents=prompt
-                )
-            else:
-                model = genai.GenerativeModel(model_name)
-                response = model.generate_content(prompt)
+            print(f"Trying generation with OpenRouter model: {model_name}")
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.7,
+            )
 
-            if response and response.text:
-                print(f"Success with {model_name}!")
-                return response.text
+            if response and response.choices and len(response.choices) > 0:
+                content = response.choices[0].message.content
+                if content and content.strip():
+                    print(f"Success with {model_name}!")
+                    return content
         except Exception as e:
             print(f"Failed with {model_name}: {e}. Waiting 3s before fallback...")
             time.sleep(3)
-    raise RuntimeError("All Gemini models failed in the fallback chain.")
+    raise RuntimeError("All OpenRouter models failed in the fallback chain.")
 
 # 3. German Minijob Niche Keywords Pool
 KEYWORD_TOPICS = [
@@ -111,8 +116,15 @@ Formatierungs-Regeln:
 
 raw_output = generate_with_fallback(prompt)
 
-cleaned_json = re.sub(r"^```json\s*", "", raw_output.strip())
-cleaned_json = re.sub(r"\s*```$", "", cleaned_json)
+cleaned_json = raw_output.strip()
+if "```" in cleaned_json:
+    match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned_json)
+    if match:
+        cleaned_json = match.group(1).strip()
+else:
+    match = re.search(r"(\{[\s\S]*\})", cleaned_json)
+    if match:
+        cleaned_json = match.group(1).strip()
 
 data = json.loads(cleaned_json)
 data["createdAt"] = firestore.SERVER_TIMESTAMP
