@@ -1,5 +1,36 @@
 [
   {
+    "slug": "minijob-kuendigungsschutz-fristen-bgb-2026",
+    "title": "Kündigungsschutz & Kündigungsfristen im Minijob nach § 622 BGB",
+    "excerpt": "Geringfügig Beschäftigte haben die gleichen Rechte wie Vollzeitkräfte: Kündigungsfristen, Schriftformerfordernis und Sonderkündigungsschutz im Detail.",
+    "readTime": "5 Min. Lesezeit",
+    "keywords": [
+      "Kündigungsfrist Minijob",
+      "Kündigungsschutzgesetz Minijob",
+      "§ 622 BGB",
+      "Fristlose Kündigung Minijob",
+      "Arbeitsrecht Minijobber"
+    ],
+    "faqs": [
+      {
+        "question": "Welche gesetzliche Kündigungsfrist gilt für Minijobber?",
+        "answer": "Nach § 622 Abs. 1 BGB gilt die Grundkündigungsfrist von vier Wochen zum 15. oder zum Ende eines Kalendermonats, sofern keine Probezeit oder vertragliche Sonderregelung vereinbart wurde."
+      },
+      {
+        "question": "Reicht eine Kündigung per E-Mail oder WhatsApp aus?",
+        "answer": "Nein. Jede Kündigung bedarf zwingend der strengen Schriftform mit handschriftlicher Originalunterschrift auf Papier (§ 623 BGB). Kündigungen per SMS, WhatsApp, E-Mail oder Fax sind unwirksam."
+      },
+      {
+        "question": "Gilt das Kündigungsschutzgesetz (KSchG) auch bei 603-Euro-Jobs?",
+        "answer": "Ja, wenn der Betrieb in der Regel mehr als 10 Vollzeit-Arbeitnehmer beschäftigt und das Arbeitsverhältnis länger als 6 Monate bestanden hat (§ 1 KSchG)."
+      }
+    ],
+    "contentHtml": "\n            <h2>Voller Kündigungsschutz für Minijobber nach deutschem Arbeitsrecht</h2>\n            <p>Ein weit verbreiteter Irrglaube lautet, Minijobber könnten jederzeit grundlos oder von heute auf morgen entlassen werden. Nach dem Gleichbehandlungsgrundsatz des Teilzeit- und Befristungsgesetzes (§ 4 TzBfG) genießen Minijobber jedoch <strong>exakt dieselben arbeitsrechtlichen Schutzrechte wie Vollzeitangestellte</strong>.</p>\n            <h3>Gesetzliche Kündigungsfristen nach § 622 BGB</h3>\n            <p>Ohne abweichende tarifliche Regelung gilt die gesetzliche Grundkündigungsfrist:</p>\n            <ul>\n                <li><strong>Grundfrist:</strong> 4 Wochen zum 15. oder zum Monatsende (§ 622 Abs. 1 BGB).</li>\n                <li><strong>In der Probezeit:</strong> 2 Wochen zu jedem beliebigen Kalendertag (Probezeit max. 6 Monate, § 622 Abs. 3 BGB).</li>\n                <li><strong>Verlängerte Fristen bei langer Betriebszugehörigkeit:</strong> Mit steigender Betriebszugehörigkeit verlängert sich die Kündigungsfrist für den Arbeitgeber schrittweise auf bis zu 7 Monate bei 20 Dienstjahren (§ 622 Abs. 2 BGB).</li>\n            </ul>\n            <p>Berechnen Sie Ihre Nettolöhne und Arbeitgeberbeiträge unkompliziert mit unserem aktuellen <a href=\"/de/minijob-rechner\">Minijob-Rechner 2026</a>.</p>\n            <h3>Besonderer Kündigungsschutz</h3>\n            <p>Schwangere Minijobberinnen (Mutterschutzgesetz § 17 MuSchG), schwerbehinderte Minijobber (§ 168 SGB IX) und Eltern in Elternzeit (§ 18 BEEG) genießen unkündbaren Sonderschutz. Eine Kündigung ist hier nur mit vorheriger behördlicher Zustimmung wirksam.</p>\n        ",
+    "status": "published",
+    "id": "minijob-kuendigungsschutz-fristen-bgb-2026",
+    "createdAt": "2026-11-09T09:11:28Z"
+  },
+  {
     "slug": "minijob-nebenjob-hauptberuf-steuern-2026",
     "title": "Minijob als Nebenjob neben dem Hauptberuf: Steuer- & Abgabenregeln 2026",
     "excerpt": "Wer neben dem Hauptberuf einen Minijob bis 603 Euro ausübt, profitiert von völliger Abgabenfreiheit. Welche Regeln bei mehreren Nebenjobs gelten.",
