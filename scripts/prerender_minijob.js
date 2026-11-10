@@ -77,7 +77,7 @@ function transformHtml(sourceHtml) {
   html = html.replace(/<!-- JSON-LD Structured Data[\s\S]*?<\/script>/i, '');
 
   // 8. Build complete Schema.org graph: WebApplication + ItemList (all articles) + FAQPage
-  const dynamicFaqs = articles.flatMap(post => 
+  const dynamicFaqs = articles.flatMap(post =>
     (post.faqs || []).map(faq => ({
       "@type": "Question",
       "name": faq.question,
@@ -154,17 +154,8 @@ function run() {
     }
   }
 
-  // 3. Ensure public/_redirects has explicit force-redirect rules
-  const redirectsContent = `# Force permanent 301 trailing-slash redirect for Minijob Rechner to prevent duplicate indexing in GSC
-/de/minijob-rechner/   /de/minijob-rechner   301!
-
-# Serve pre-rendered Minijob Rechner HTML for exact route and sub-routes
-/de/minijob-rechner    /de/minijob-rechner.html   200
-/de/minijob-rechner/*  /de/minijob-rechner.html   200
-
-# SPA wildcard fallback
-/*                     /index.html                200
-`;
+  // 3. Ensure public/_redirects has standard Netlify SPA fallback rule
+  const redirectsContent = `/*    /index.html   200\n`;
   fs.writeFileSync(path.resolve(ROOT_DIR, 'public', '_redirects'), redirectsContent, 'utf-8');
   console.log('[Prerender] Updated public/_redirects');
 

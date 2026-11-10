@@ -1,9 +1,1 @@
-# Force permanent 301 trailing-slash redirect for Minijob Rechner to prevent duplicate indexing in GSC
-/de/minijob-rechner/   /de/minijob-rechner   301!
-
-# Serve pre-rendered Minijob Rechner HTML for exact route and sub-routes
-/de/minijob-rechner    /de/minijob-rechner.html   200
-/de/minijob-rechner/*  /de/minijob-rechner.html   200
-
-# SPA wildcard fallback
-/*                     /index.html                200
+/*    /index.html   200

@@ -1,20 +1,4 @@
 [[redirects]]
-  from = "/de/minijob-rechner/"
-  to = "/de/minijob-rechner"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/de/minijob-rechner"
-  to = "/de/minijob-rechner.html"
-  status = 200
-
-[[redirects]]
-  from = "/de/minijob-rechner/*"
-  to = "/de/minijob-rechner.html"
-  status = 200
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
