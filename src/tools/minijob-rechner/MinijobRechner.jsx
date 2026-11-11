@@ -37,6 +37,7 @@ import {
   getDocs, 
   INITIAL_GERMAN_BLOG_POSTS 
 } from './firebase';
+import Footer from '../../components/Footer';
 import styles from './styles.module.css';
 
 // Quick-select preset values specified by statutory guidelines
@@ -1739,6 +1740,9 @@ export default function MinijobRechner() {
           </div>
         </div>
       </footer>
+
+      {/* 5. Global MSynthos Footer (Google AdSense & Legal Compliance) */}
+      <Footer />
     </div>
   );
 }

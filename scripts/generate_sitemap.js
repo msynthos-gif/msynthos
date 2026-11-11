@@ -48,6 +48,21 @@ const STATIC_ROUTES = [
     url: `${BASE_URL}/contact`,
     changefreq: 'monthly',
     priority: '0.7'
+  },
+  {
+    url: `${BASE_URL}/privacy-policy`,
+    changefreq: 'monthly',
+    priority: '0.5'
+  },
+  {
+    url: `${BASE_URL}/terms`,
+    changefreq: 'monthly',
+    priority: '0.5'
+  },
+  {
+    url: `${BASE_URL}/impressum`,
+    changefreq: 'monthly',
+    priority: '0.5'
   }
 ];
 

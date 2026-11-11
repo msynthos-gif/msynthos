@@ -11,6 +11,9 @@ import Courses from './pages/Courses'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import ContactPage from './pages/ContactPage'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import Impressum from './pages/Impressum'
 import ChatWidget from './components/ChatWidget'
 import MinijobRechner from './tools/minijob-rechner/MinijobRechner'
 
@@ -56,6 +59,11 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/impressum" element={<Impressum />} />
         {/* Wildcard catch-all fallback */}
         <Route path="*" element={<HomePage />} />
       </Route>
