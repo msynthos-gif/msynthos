@@ -1,5 +1,36 @@
 [
   {
+    "slug": "mindestlohn-erhoehung-13-90-euro-auswirkungen-2026",
+    "title": "Mindestlohnerhöhung auf 13,90 Euro: Was Minijobber & Betriebe wissen müssen",
+    "excerpt": "Die Anhebung des Mindestlohns auf 13,90 Euro und die Anpassung der Geringfügigkeitsgrenze auf 603 Euro: Rechtslage, Stundensätze und Pflichten.",
+    "readTime": "5 Min. Lesezeit",
+    "keywords": [
+      "Mindestlohn 13,90 Euro",
+      "Mindestlohn 2026",
+      "Minijob-Grenze 603 Euro",
+      "Stundenlohn Anpassung",
+      "Mindestlohnkommission"
+    ],
+    "faqs": [
+      {
+        "question": "Wann trat der Mindestlohn von 13,90 Euro in Kraft?",
+        "answer": "Der gesetzliche Mindestlohn wurde zum 1. Januar 2026 wirksam auf 13,90 Euro brutto pro Zeitstunde angehoben."
+      },
+      {
+        "question": "Wie wird die Minijob-Grenze berechnet?",
+        "answer": "Die Formel lautet: Mindestlohn × 130 / 3, kaufmännisch aufgerundet auf volle Euro (13,90 € × 130 / 3 = 602,33 € -> gerundet 603 Euro)."
+      },
+      {
+        "question": "Müssen Altverträge bei Lohnerhöhungen angepasst werden?",
+        "answer": "Ja. Arbeitsverträge mit unzulässigen Alt-Stundenlöhnen müssen angepasst werden, um Verstöße gegen das Mindestlohngesetz (MiLoG) und Nachzahlungsansprüche auszuschließen."
+      }
+    ],
+    "contentHtml": "\n            <h2>Die dynamische Koppelung des Minijobs an den Mindestlohn</h2>\n            <p>Mit der gesetzlichen Regelung aus § 8 Abs. 1a SGB IV ist die Geringfügigkeitsgrenze fest mit der Höhe des allgemeinen Mindestlohns verknüpft. Seit dem 1. Januar 2026 beträgt der Mindestlohn <strong>13,90 Euro pro Zeitstunde</strong>. Dadurch stieg die Verdienstgrenze synchron auf <strong>603,00 Euro pro Monat</strong>.</p>\n            <h3>Die 10-Stunden-Woche als Bemessungsgrundlage</h3>\n            <p>Ziel der gesetzlichen Koppelung ist es, Minijobbern eine regelmäßige Wochenarbeitszeit von rund 10 Stunden zum Mindestlohn zu ermöglichen:</p>\n            <ul>\n                <li>10 Stunden / Woche × 13,90 € / Std. = 139,00 € wöchentlich.</li>\n                <li>139,00 € × 13 Wochen / 3 Monate = <strong>602,33 € -> aufgerundet 603,00 Euro monatlich</strong>.</li>\n            </ul>\n            <p>Prüfen Sie Ihre Lohnabrechnungen mit unserem verifizierten <a href=\"/de/minijob-rechner\">Minijob-Rechner 2026</a>.</p>\n            <h3>Achtung bei Überstunden und Sachbezügen</h3>\n            <p>Betriebe müssen strikt darauf achten, dass geleistete Mehrarbeit oder Zulagen nicht zu einem Überschreiten der 603-Euro-Grenze führen, da sonst rückwirkend Sozialversicherungspflicht eintritt.</p>\n        ",
+    "status": "published",
+    "id": "mindestlohn-erhoehung-13-90-euro-auswirkungen-2026",
+    "createdAt": "2026-11-17T09:54:09Z"
+  },
+  {
     "slug": "kurzfristige-beschaeftigung-70-tage-grenze-2026",
     "title": "Kurzfristige Beschäftigung vs. 603-Euro-Minijob: Die 70-Tage-Regel erklärt",
     "excerpt": "Völlig abgabenfreier Saisonjob: Bis zu 70 Arbeitstage oder 3 Monate ohne Verdienstgrenze arbeiten. Unterschiede, Voraussetzungen und Berufsmäßigkeit.",
