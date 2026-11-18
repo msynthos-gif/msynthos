@@ -1,5 +1,36 @@
 [
   {
+    "slug": "sonderzahlungen-weihnachtsgeld-minijob-2026",
+    "title": "Weihnachtsgeld und Einmalzahlungen im Minijob: So bleibt der Status abgabenfrei",
+    "excerpt": "Urlaubs- oder Weihnachtsgeld im Minijob: Wie Einmalzahlungen den 603-Euro-Status gefährden und welche Freibeträge und Lösungen existieren.",
+    "readTime": "5 Min. Lesezeit",
+    "keywords": [
+      "Weihnachtsgeld Minijob",
+      "Einmalzahlung Minijob",
+      "Jahresverdienstgrenze 7236 Euro",
+      "Sonderzahlung Minijobber",
+      "Gleichbehandlungsgrundsatz"
+    ],
+    "faqs": [
+      {
+        "question": "Haben Minijobber Anspruch auf Weihnachtsgeld, wenn Festangestellte es erhalten?",
+        "answer": "Ja. Nach dem arbeitsrechtlichen Gleichbehandlungsgrundsatz (§ 4 TzBfG) dürfen Minijobber bei Sonderzahlungen nicht grundlos ausgeschlossen werden."
+      },
+      {
+        "question": "Wie hoch ist die maximale Jahresverdienstgrenze 2026?",
+        "answer": "Die Jahresverdienstgrenze beträgt genau 12 × 603 Euro = 7.236,00 Euro pro Kalenderjahr."
+      },
+      {
+        "question": "Was passiert, wenn Weihnachtsgeld die 7.236-Euro-Grenze sprengt?",
+        "answer": "Wird durch eine planbare Einmalzahlung die Jahresgrenze von 7.236 Euro überschritten, verliert die Beschäftigung ab dem Monat der Zahlung oder rückwirkend den Minijob-Status."
+      }
+    ],
+    "contentHtml": "\n            <h2>Jahresbetrachtung: Wann Sonderzahlungen den Minijob gefährden</h2>\n            <p>Arbeitgeber belohnen Mitarbeiter gerne mit Weihnachts- oder Urlaubsgeld. Bei Minijobbern führt eine solche Einmalzahlung jedoch häufig zu einem bösen Erwachen: Sie kann dazu führen, dass der <strong>Minijob-Status rückwirkend erlischt</strong> und Beiträge nachgezahlt werden müssen.</p>\n            <h3>Die 7.236-Euro-Jahresgrenze nach § 8 SGB IV</h3>\n            <p>Für das Vorliegen eines Minijobs ist nicht allein der Kalendermonat entscheidend, sondern die <strong>Jahresverdienstgrenze von 7.236 Euro</strong> (12 Monate × 603 Euro). Planbare Sonderzahlungen müssen in das regelmäßige Jahresarbeitsentgelt eingerechnet werden:</p>\n            <ul>\n                <li>Verdient ein Mitarbeiter 550 Euro monatlich und erhält 500 Euro Weihnachtsgeld, liegt der Jahresverdienst bei 7.100 Euro (550 × 12 + 500) -> <strong>Status Minijob bleibt erhalten</strong>.</li>\n                <li>Verdient der Mitarbeiter jedoch 603 Euro monatlich und erhält 300 Euro Weihnachtsgeld, liegt der Jahresverdienst bei 7.536 Euro -> <strong>Versicherungspflicht tritt ein!</strong></li>\n            </ul>\n            <p>Berechnen Sie Ihre Vergütungsgrenzen jederzeit im <a href=\"/de/minijob-rechner\">Minijob-Rechner 2026</a>.</p>\n            <h3>Steuerfreie Alternativen: Sachbezüge & Gutscheine</h3>\n            <p>Um Minijobbern trotzdem eine Sonderzuwendung zukommen zu lassen, bieten sich steuerfreie Sachbezüge nach § 8 Abs. 2 EStG (z.B. 50 Euro monatlich als Gutschein) an, da diese nicht als sozialversicherungspflichtiges Arbeitsentgelt zählen.</p>\n        ",
+    "status": "published",
+    "id": "sonderzahlungen-weihnachtsgeld-minijob-2026",
+    "createdAt": "2026-11-18T09:28:06Z"
+  },
+  {
     "slug": "mindestlohn-erhoehung-13-90-euro-auswirkungen-2026",
     "title": "Mindestlohnerhöhung auf 13,90 Euro: Was Minijobber & Betriebe wissen müssen",
     "excerpt": "Die Anhebung des Mindestlohns auf 13,90 Euro und die Anpassung der Geringfügigkeitsgrenze auf 603 Euro: Rechtslage, Stundensätze und Pflichten.",
