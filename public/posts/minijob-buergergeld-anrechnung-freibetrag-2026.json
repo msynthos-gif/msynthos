@@ -1,0 +1,30 @@
+{
+  "slug": "minijob-buergergeld-anrechnung-freibetrag-2026",
+  "title": "Minijob und Bürgergeld 2026: Freibeträge und Anrechnung auf die Regelleistung",
+  "excerpt": "Wie viel Geld bleibt vom 603-Euro-Minijob beim Bürgergeld übrig? Grundfreibetrag, Erwerbstätigenfreibetrag und Rechenbeispiele nach § 11b SGB II.",
+  "readTime": "5 Min. Lesezeit",
+  "keywords": [
+    "Bürgergeld Minijob Anrechnung",
+    "Freibetrag Bürgergeld 2026",
+    "§ 11b SGB II",
+    "Hinzuverdienst Bürgergeld",
+    "Minijob Jobcenter"
+  ],
+  "faqs": [
+    {
+      "question": "Wie hoch ist der Grundfreibetrag beim Bürgergeld?",
+      "answer": "Die ersten 100 Euro aus Erwerbseinkommen sind komplett anrechnungsfrei (Grundfreibetrag nach § 11b Abs. 2 SGB II)."
+    },
+    {
+      "question": "Wie viel Geld darf man bei einem 603-Euro-Minijob behalten?",
+      "answer": "Bei 603 Euro Bruttoverdienst bleiben dem Bürgergeld-Empfänger genau 200,60 Euro zusätzlich zur vollen Regelleistung erhalten (100 € Grundfreibetrag + 20 % von 503 € = 100,60 €)."
+    },
+    {
+      "question": "Muss der Minijob dem Jobcenter gemeldet werden?",
+      "answer": "Ja, jede Aufnahme einer Erwerbstätigkeit muss dem zuständigen Jobcenter unverzüglich mit Arbeitsvertrag und monatlicher Entgeltabrechnung mitgeteilt werden."
+    }
+  ],
+  "contentHtml": "\n            <h2>Lohnt sich ein Minijob beim Bezug von Bürgergeld?</h2>\n            <p>Viele Bürgergeld-Bezieher stellen sich die Frage, wie viel von einem 603-Euro-Minijob nach Anrechnung durch das Jobcenter tatsächlich übrig bleibt. Nach § 11b SGB II gelten <strong>gestaffelte Erwerbstätigenfreibeträge</strong>, die sicherstellen, dass Erwerbstätige stets mehr Geld zur Verfügung haben als Nicht-Erwerbstätige.</p>\n            <h3>Berechnung des Freibetrags nach § 11b SGB II</h3>\n            <p>Die Anrechnung erfolgt nach folgender gesetzlicher Staffelung:</p>\n            <ul>\n                <li><strong>Erste 100,00 Euro:</strong> 100 % anrechnungsfrei (Grundfreibetrag für Werbungskosten).</li>\n                <li><strong>100,01 € bis 520,00 €:</strong> 20 % Freibetrag (420 € × 20 % = 84,00 Euro).</li>\n                <li><strong>520,01 € bis 603,00 €:</strong> 20 % Freibetrag (83 € × 20 % = 16,60 Euro).</li>\n            </ul>\n            <p>Prüfen Sie Ihr Brutto- und Nettogehalt im <a href=\"/de/minijob-rechner\">Minijob-Rechner 2026</a>.</p>\n            <h3>Ergebnis: 200,60 Euro monatliches Plus</h3>\n            <p>Von einem vollen 603-Euro-Minijob behält der Leistungsbezieher exakt <strong>200,60 Euro monatlich zusätzlich</strong> zu den vollen Bürgergeld-Leistungen (Regelbedarf plus Kosten der Unterkunft). Der Restbetrag von 402,40 Euro wird mit dem Auszahlungsbetrag des Jobcenters verrechnet.</p>\n        ",
+  "status": "published",
+  "createdAt": "2026-11-21T08:58:17Z"
+}
