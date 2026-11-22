@@ -1,5 +1,36 @@
 [
   {
+    "slug": "minijob-sv-befreiungsantrag-muster-fristen-2026",
+    "title": "Befreiungsantrag von der Rentenversicherung: Fristen, Formular & Vorlage",
+    "excerpt": "3,6 % Eigenanteil sparen: Wie Sie den Antrag auf Befreiung von der Rentenversicherungspflicht (§ 6 Abs. 1b SGB VI) formgerecht stellen und abgeben.",
+    "readTime": "5 Min. Lesezeit",
+    "keywords": [
+      "Befreiungsantrag Rentenversicherung Minijob",
+      "§ 6 Abs. 1b SGB VI",
+      "Rentenversicherungspflicht befreien Formular",
+      "Frist Befreiung Minijob-Zentrale",
+      "Muster Befreiungsantrag"
+    ],
+    "faqs": [
+      {
+        "question": "Wann wird die Befreiung von der Rentenversicherungspflicht wirksam?",
+        "answer": "Der Antrag wirkt ab dem Tag des Eingangs beim Arbeitgeber, wenn der Arbeitgeber die Befreiung innerhalb von 6 Wochen der Minijob-Zentrale meldet und diese nicht innerhalb eines Monats widerspricht (§ 6 Abs. 4 SGB VI)."
+      },
+      {
+        "question": "Kann eine erfolgte Befreiung widerrufen werden?",
+        "answer": "Nein. Die Befreiung von der Rentenversicherungspflicht gilt unwiderruflich für die gesamte Dauer des jeweiligen Minijob-Arbeitsverhältnisses."
+      },
+      {
+        "question": "Gilt die Befreiung automatisch für andere Minijobs?",
+        "answer": "Übt der Minijobber mehrere geringfügige Beschäftigungen aus, kann der Befreiungsantrag nur einheitlich für alle zeitgleich ausgeübten Minijobs gestellt werden."
+      }
+    ],
+    "contentHtml": "\n            <h2>Die Formalitäten zur Befreiung von der Rentenversicherungspflicht</h2>\n            <p>Seit 2013 sind geringfügig entlohnte Beschäftigte grundsätzlich gesetzlich rentenversicherungspflichtig. Sie können sich jedoch auf schriftlichen Antrag nach § 6 Abs. 1b SGB VI von dieser Beitragspflicht befreien lassen. Dadurch spart der Minijobber den <strong>Eigenanteil von 3,6 %</strong> (bei 603 Euro monatlich genau 21,71 Euro).</p>\n            <h3>Schritt-für-Schritt: So stellen Sie den Antrag</h3>\n            <ol>\n                <li><strong>Schriftform:</strong> Der Antrag muss schriftlich verfasst und vom Arbeitnehmer handschriftlich unterschrieben werden.</li>\n                <li><strong>Übergabe an den Arbeitgeber:</strong> Das Dokument wird beim Arbeitgeber eingereicht, nicht direkt bei der Minijob-Zentrale!</li>\n                <li><strong>Meldung durch den Arbeitgeber:</strong> Der Arbeitgeber meldet den Befreiungsantrag mit der nächsten Entgeltmeldung (Schlüssel '2' in der Rentenversicherung) an die Minijob-Zentrale.</li>\n                <li><strong>Widerspruchsfrist:</strong> Widerspricht die Minijob-Zentrale nicht innerhalb eines Monats, gilt die Befreiung rückwirkend als genehmigt.</li>\n            </ol>\n            <p>Sehen Sie die Auszahlungseffekte mit und ohne Befreiung im <a href=\"/de/minijob-rechner\">Minijob-Rechner 2026</a>.</p>\n            <h3>Aufbewahrung im Lohnkonto</h3>\n            <p>Der Arbeitgeber muss den Originalantrag des Minijobbers als prüfungsrelevanten Beleg zum Lohnkonto nehmen und mindestens bis zum Ablauf der Verjährungsfrist aufbewahren.</p>\n        ",
+    "status": "published",
+    "id": "minijob-sv-befreiungsantrag-muster-fristen-2026",
+    "createdAt": "2026-11-22T09:02:17Z"
+  },
+  {
     "slug": "minijob-buergergeld-anrechnung-freibetrag-2026",
     "title": "Minijob und Bürgergeld 2026: Freibeträge und Anrechnung auf die Regelleistung",
     "excerpt": "Wie viel Geld bleibt vom 603-Euro-Minijob beim Bürgergeld übrig? Grundfreibetrag, Erwerbstätigenfreibetrag und Rechenbeispiele nach § 11b SGB II.",
